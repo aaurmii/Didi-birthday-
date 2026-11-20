@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,271 +6,574 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b9dcff">
 <title>For Didi ♡</title>
+
 <style>
-:root{--sky:#eaf6ff;--blue:#a9d5ff;--mid:#78b9ed;--deep:#397db5;--ink:#244765;--white:#fff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#b9dcff 0%,#eaf6ff 55%,#d4eaff 100%)}
-button{border:0;border-radius:999px;background:#78b9ed;color:white;padding:14px 25px;font-size:15px;cursor:pointer;box-shadow:0 5px 0 #397db5;transition:.2s}
-button:hover{transform:translateY(-3px)}button:active{transform:translateY(2px);box-shadow:0 2px 0 #397db5}
-.secondary{background:#e6f4ff;color:#28649b;box-shadow:0 5px 0 #a5cfea}
-.stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(#fff 1.5px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1px);background-size:70px 70px,110px 110px;background-position:0 0,30px 40px;animation:twinkle 4s ease-in-out infinite alternate;z-index:0}
-@keyframes twinkle{from{opacity:.3}to{opacity:.85}}
-.cloud{position:fixed;font-size:46px;opacity:.55;pointer-events:none;z-index:0;animation:float 8s ease-in-out infinite}
-.c1{top:9%;left:4%}.c2{top:22%;right:5%;animation-delay:2s}.c3{bottom:10%;left:8%;animation-delay:4s}
-@keyframes float{50%{transform:translateY(-16px)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes pop{from{opacity:0;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
-@keyframes bob{50%{transform:translateY(-10px)}}
-@keyframes twinkleText{50%{opacity:.55;transform:scale(1.08)}}
-.screen{min-height:100svh;display:none;position:relative;z-index:2;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:28px 18px;animation:fade .8s ease}
-.screen.active{display:flex}
-.pixel-label{font:12px monospace;letter-spacing:3px;color:#397db5;text-transform:uppercase}
-.intro-cloud{font-size:76px;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 6px 0 #ffffff80)}
-.intro h1{font-size:clamp(48px,12vw,76px);color:#28649b;text-shadow:4px 4px white;margin:14px 0}
-.intro p{max-width:330px;line-height:1.8}
-.sparkles{font-size:27px;letter-spacing:10px;color:white;margin:15px 0 28px;animation:twinkleText 2s infinite alternate}
-.pixel-panel{width:min(440px,100%);padding:25px 18px;background:#ffffffc9;border:3px solid white;outline:2px dashed #8fc6f2;outline-offset:5px;box-shadow:8px 8px 0 #79b5e5;border-radius:8px}
-.couple{font-size:72px;line-height:1.3;margin:0 0 10px;filter:drop-shadow(3px 4px white);animation:bob 3s ease-in-out infinite}
-.password-title{font:13px monospace;letter-spacing:2px;color:#397db5}
-h2{color:#28649b;margin:10px 0 12px;font-size:clamp(24px,6vw,32px)}
-.password-subtitle{font-size:14px;color:#477da8;margin-bottom:16px}
-.password-display{display:flex;justify-content:center;gap:13px;margin:15px 0 20px}
-.password-dot{width:43px;height:43px;border:2px solid white;border-radius:8px;background:#eaf6ff;display:grid;place-items:center;font-size:23px;color:#397db5;box-shadow:3px 3px 0 #a9d5ff}
-.keypad{display:grid;grid-template-columns:repeat(3,62px);gap:11px;justify-content:center;margin:10px auto}
-.keypad button{width:62px;height:55px;padding:0;border-radius:8px;background:#eaf6ff;color:#397db5;border:2px solid white;box-shadow:0 4px 0 #a9d5ff;font:bold 20px monospace}
-.keypad .special{font-size:12px;background:#d9edff}
-.password-message{min-height:25px;font-size:13px;color:#397db5;margin:12px 0 4px}
-.password-hint{font:10px monospace;letter-spacing:2px;color:#6b9bc0}
-.wrap{width:min(720px,92%);margin:0 auto;padding:25px 0 55px;position:relative;z-index:1}
-.site{display:none}.site.started{display:block;animation:fade 1s ease}
-header{text-align:center;padding:24px 10px 18px}
-.label{display:inline-block;background:#ffffff99;padding:8px 16px;border:1px solid white;border-radius:30px;font:12px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
-header h1{font-size:clamp(40px,9vw,68px);line-height:1.05;margin:20px 0 10px;color:#28649b;text-shadow:3px 3px white}
-.subtitle{font-size:17px;margin:0 auto;max-width:450px;line-height:1.7}
-.pixel{font:12px monospace;letter-spacing:2px;color:#4f88b8;margin:18px 0}
-.card{background:#ffffffdc;border:2px solid white;border-radius:20px;padding:25px;margin:22px 0;text-align:center;box-shadow:0 10px 30px #4d8db522;backdrop-filter:blur(5px);animation:pop .6s ease}
-.hidden{display:none!important}
-.hero-art{font-size:clamp(55px,13vw,82px);margin:8px 0 12px;filter:drop-shadow(0 5px 0 #a7d5f5);animation:bob 4s ease-in-out infinite}
-p{line-height:1.75}
-.envelope-stage{width:100%;height:330px;display:flex;justify-content:center;align-items:flex-end;position:relative;margin:15px auto 0}
-.envelope{position:relative;width:min(340px,88%);height:205px;margin:0 auto 18px;cursor:pointer;perspective:1000px}
-.envelope-back{position:absolute;inset:0;background:#a9d5ff;border-radius:8px;box-shadow:0 8px 20px #397db533;z-index:1}
-.letter-peek{position:absolute;width:90%;height:185px;left:5%;bottom:6px;z-index:2;padding:15px;background:linear-gradient(135deg,#fff,#f0f8ff);border:1px solid #b9dcf7;border-radius:5px;color:#315675;font:13px Georgia,serif;line-height:1.7;overflow:hidden;transition:transform 1s ease}
-.envelope-front{position:absolute;inset:0;z-index:4;background:#78b9ed;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:0 0 8px 8px;pointer-events:none}
-.envelope-flap{position:absolute;width:0;height:0;top:0;left:0;z-index:5;border-left:min(170px,44vw) solid transparent;border-right:min(170px,44vw) solid transparent;border-top:110px solid #397db5;transform-origin:top center;transition:transform .8s ease,z-index .1s .4s;pointer-events:none}
-.envelope.open .envelope-flap{transform:rotateX(180deg);z-index:1}
-.envelope.open .letter-peek{transform:translateY(-145px);transition-delay:.3s}
-.envelope-hint{font-size:13px;color:#397db5}
-.full-letter{background:linear-gradient(135deg,#fff,#f0f8ff);border:2px dashed #a9d5ff;border-radius:8px;padding:22px;text-align:left;white-space:pre-line;font:15px/1.9 Georgia,serif;color:#315675}
-.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.gift{background:#eaf6ff;border:2px solid white;border-radius:10px;padding:15px 6px;color:#397db5;box-shadow:0 5px 0 #a9d5ff;font-size:34px}
-.gift small{display:block;font:11px monospace;color:#477da8;margin-top:8px}
-#giftMessage{min-height:52px;color:#28649b}
-.memory-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:18px 0}
-.memory-grid img{width:100%;height:290px;object-fit:cover;border:5px solid white;border-radius:12px;box-shadow:0 5px 0 #a9d5ff}
-.memory-grid img:first-child{grid-column:1/-1;height:340px;object-position:center 35%}
-.music-box{background:#eaf6ff;border:2px dashed #9bcaf0;border-radius:12px;padding:18px;margin:18px 0}
-.music-icon{font-size:55px;animation:bob 3s infinite}
-audio{width:100%;margin:12px 0}
-.music-caption{font:11px monospace;letter-spacing:1px;color:#5c8bb1}
-.floating-heart{position:fixed;bottom:-30px;color:white;pointer-events:none;z-index:0;animation:heartFloat 7s linear forwards}
-@keyframes heartFloat{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
-footer{text-align:center;font:11px monospace;letter-spacing:2px;color:#5c8bb1;margin:30px 0}
-@media(max-width:480px){.card{padding:21px 16px}.gift-grid{gap:7px}.gift{padding:12px 3px}.subtitle{font-size:15px}.envelope-stage{height:300px}.memory-grid img{height:220px}.memory-grid img:first-child{height:270px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: linear-gradient(180deg,#dff1ff,#b9dcff,#eaf6ff);
+  color: #285d8e;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 35px 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.page.active {
+  display: flex;
+  animation: fade .7s ease;
+}
+
+@keyframes fade {
+  from {opacity:0; transform:translateY(12px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+h1 {
+  font-size: 36px;
+  margin: 12px 0;
+}
+
+h2 {
+  font-size: 27px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.small {
+  font-size: 14px;
+  color: #5688b6;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  background: #78b9ed;
+  color: white;
+  padding: 14px 25px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #397db5;
+  transition: .2s;
+  margin: 10px;
+  font-family: inherit;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #397db5;
+}
+
+.card {
+  background: rgba(255,255,255,.65);
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 28px 22px;
+  width: 100%;
+  max-width: 470px;
+  box-shadow: 0 8px 25px rgba(68,139,195,.15);
+}
+
+.cloud {
+  position: absolute;
+  font-size: 45px;
+  opacity: .65;
+  animation: float 4s ease-in-out infinite;
+}
+
+.cloud.one {
+  top: 10%;
+  left: 7%;
+}
+
+.cloud.two {
+  right: 8%;
+  bottom: 13%;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  50% {transform:translateY(-13px)}
+}
+
+/* PASSWORD */
+
+#passwordDisplay {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  letter-spacing: 12px;
+  font-size: 25px;
+  margin: 20px auto;
+  width: 210px;
+  min-height: 58px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3,65px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.keypad button {
+  width: 65px;
+  height: 55px;
+  padding: 0;
+  margin: 0;
+}
+
+/* ENVELOPE */
+
+.envelope {
+  width: 260px;
+  height: 175px;
+  margin: 35px auto;
+  position: relative;
+  background: #78b9ed;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 7px 0 #397db5;
+  transition: .4s;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-top: 100px solid #a5d5fa;
+  transform-origin: top;
+  transition: .6s;
+  z-index: 3;
+}
+
+.envelope:after {
+  content: "♡";
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  font-size: 40px;
+  color: white;
+  z-index: 4;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+.letter {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  position: absolute;
+  width: 88%;
+  left: 6%;
+  top: 10px;
+  min-height: 150px;
+  transition: .7s;
+  opacity: 0;
+  z-index: 2;
+  font-size: 13px;
+}
+
+.envelope.open .letter {
+  transform: translateY(-125px);
+  opacity: 1;
+}
+
+/* GIFTS */
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+  margin: 25px auto;
+}
+
+.gift {
+  background: rgba(255,255,255,.8);
+  border: 2px solid white;
+  border-radius: 18px;
+  color: #397db5;
+  padding: 20px 5px;
+  font-size: 38px;
+  box-shadow: 0 5px 0 #a0ccef;
+  margin: 0;
+}
+
+.gift small {
+  display: block;
+  font-size: 10px;
+  margin-top: 9px;
+}
+
+.gift-reveal {
+  margin: 20px auto;
+  max-width: 420px;
+  animation: fade .5s ease;
+}
+
+.gift-reveal img {
+  width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  background: white;
+  padding: 7px;
+  border: 3px solid white;
+  border-radius: 15px;
+  box-shadow: 0 6px 0 #a9d5ff;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* SONG */
+
+.music-icon {
+  font-size: 75px;
+  animation: float 2s infinite;
+}
+
+audio {
+  width: 100%;
+  max-width: 350px;
+  margin: 25px auto;
+}
+
+/* FINAL */
+
+.big-heart {
+  font-size: 100px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% {transform:scale(1)}
+  50% {transform:scale(1.15)}
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #6598c2;
+}
 </style>
 </head>
+
 <body>
-<div class="stars"></div><div class="cloud c1">☁️</div><div class="cloud c2">☁️</div><div class="cloud c3">☁️</div>
 
-<section class="screen intro active" id="intro">
-  <div class="intro-cloud">☁️</div>
-  <p class="pixel-label">A SPECIAL DAY FOR</p>
+<!-- PAGE 1: WELCOME -->
+
+<section class="page active" id="welcome">
+
+<div class="cloud one">☁️</div>
+<div class="cloud two">☁️</div>
+
+<div class="card">
+  <div style="font-size:55px">🩵</div>
+  <p class="small">A little surprise made with love</p>
   <h1>For Didi ♡</h1>
-  <p>Someone special deserves something special. A little surprise made with love.</p>
-  <div class="sparkles">✦ ♡ ✦</div>
-  <button onclick="startExperience()">START ♡</button>
+  <p>Someone special deserves something special.</p>
+  <button onclick="showPage('password')">START ♡</button>
+</div>
+
 </section>
 
-<section class="screen" id="passwordScreen">
-  <div class="pixel-panel">
-    <div class="couple">👩🏻‍❤️‍👨🏻</div>
-    <p class="password-title">A LITTLE SECRET FOR YOU</p>
-    <h2>Guess the Password ♡</h2>
-    <p class="password-subtitle">Only someone special knows the answer...</p>
-    <div class="password-display">
-      <div class="password-dot" id="digit0">♡</div><div class="password-dot" id="digit1">♡</div>
-      <div class="password-dot" id="digit2">♡</div><div class="password-dot" id="digit3">♡</div>
-    </div>
-    <div class="keypad">
-      <button onclick="pressNumber('1')">1</button><button onclick="pressNumber('2')">2</button><button onclick="pressNumber('3')">3</button>
-      <button onclick="pressNumber('4')">4</button><button onclick="pressNumber('5')">5</button><button onclick="pressNumber('6')">6</button>
-      <button onclick="pressNumber('7')">7</button><button onclick="pressNumber('8')">8</button><button onclick="pressNumber('9')">9</button>
-      <button class="special" onclick="clearPassword()">CLEAR</button><button onclick="pressNumber('0')">0</button><button class="special" onclick="deleteNumber()">⌫</button>
-    </div>
-    <p class="password-message" id="passwordMessage">Enter the 4-digit password ♡</p>
-    <p class="password-hint">MADE WITH LOVE FOR DIDI</p>
+
+<!-- PAGE 2: PASSWORD -->
+
+<section class="page" id="password">
+
+<div class="card">
+  <div style="font-size:45px">🔐</div>
+  <h2>One little secret...</h2>
+  <p>Enter your special 4-digit password.</p>
+
+  <div id="passwordDisplay">____</div>
+
+  <div class="keypad">
+    <button onclick="pressKey('1')">1</button>
+    <button onclick="pressKey('2')">2</button>
+    <button onclick="pressKey('3')">3</button>
+    <button onclick="pressKey('4')">4</button>
+    <button onclick="pressKey('5')">5</button>
+    <button onclick="pressKey('6')">6</button>
+    <button onclick="pressKey('7')">7</button>
+    <button onclick="pressKey('8')">8</button>
+    <button onclick="pressKey('9')">9</button>
+    <button onclick="clearPassword()">⌫</button>
+    <button onclick="pressKey('0')">0</button>
+    <button onclick="checkPassword()">♡</button>
   </div>
+
+  <p id="passwordMessage" class="small"></p>
+</div>
+
 </section>
 
-<main class="wrap site" id="site">
-<header>
-  <span class="label">A little surprise for someone special</span>
-  <h1>Happy Birthday,<br>Didi!</h1>
-  <p class="subtitle">To my favourite person, Didi — today is all about you. I hope this little corner of the internet makes you smile. ♡</p>
-  <div class="pixel">✦ MADE WITH LOVE ✦</div>
-</header>
 
-<section class="card" id="welcome">
-  <div class="hero-art">🎂 🧸 🎈</div>
-  <h2>Happy Birthday, Love!</h2>
-  <p>I made this little world just for you. Are you ready for your surprise?</p>
-  <button onclick="showSection('letter')">START YOUR SURPRISE ♡</button>
-</section>
+<!-- PAGE 3: ENVELOPE -->
 
-<section class="card hidden" id="letter">
-  <div class="hero-art">💌</div>
-  <h2>A Little Letter for You</h2>
-  <p>Something special is waiting inside...</p>
-  <div class="envelope-stage">
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
-      <div class="envelope-back"></div>
-      <div class="letter-peek">A letter for you, Didi ♡<br><br>Tap to open...</div>
-      <div class="envelope-front"></div><div class="envelope-flap"></div>
+<section class="page" id="letter">
+
+<div class="card">
+  <p class="small">A little letter for you</p>
+  <h2>Happy Birthday, Didi! ♡</h2>
+
+  <p>Before anything else, I have something special for you.</p>
+  <p>Tap the envelope to open your letter.</p>
+
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="letter">
+      <strong>To my favourite person ♡</strong>
+      <p>Happy Birthday, baby!</p>
+      <p>I hope your day is filled with happiness, love and beautiful moments.</p>
+      <p>Thank you for being part of my life. I hope you always remember how special you are to me.</p>
+      <p>With love, always. 🩵</p>
     </div>
   </div>
-  <p class="envelope-hint">♡ Tap the envelope to open it ♡</p>
-  <button onclick="showSection('readLetter')">READ YOUR LETTER →</button>
+
+  <p id="envelopeHint" class="small">Tap the envelope ♡</p>
+
+  <button id="letterNext" class="hidden" onclick="showPage('gifts')">
+    OPEN YOUR GIFTS 🎁
+  </button>
+</div>
+
 </section>
 
-<section class="card hidden" id="readLetter">
-  <div class="hero-art">🩵</div>
-  <h2>To My Favourite Person</h2>
-  <div class="full-letter">Dear Didi,
 
-Happy birthday to the person who makes ordinary days feel a little more special.
+<!-- PAGE 4: GIFTS -->
 
-I hope this new chapter brings you genuine happiness, good health, exciting opportunities, and countless reasons to smile.
+<section class="page" id="gifts">
 
-May you always find the courage to chase your dreams and the strength to get through the difficult days.
+<div class="card">
+  <p class="small">Three little surprises</p>
+  <h2>Choose Your Gift! 🎁</h2>
+  <p>Tap each gift to reveal a little memory.</p>
 
-Thank you for being you. You deserve all the beautiful things life has to offer.
-
-With lots of love,
-Your favourite person ♡</div>
-  <p><button onclick="showSection('gifts')">CHOOSE YOUR GIFT →</button></p>
-</section>
-
-<section class="card hidden" id="gifts">
-  <div class="hero-art">🎁</div>
-  <h2>Choose Your Gift</h2>
-  <p>Pick any little gift. Each one has a message for you.</p>
   <div class="gift-grid">
-    <button class="gift" onclick="gift(0)">🎁<small>GIFT ONE</small></button>
-    <button class="gift" onclick="gift(1)">🎀<small>GIFT TWO</small></button>
-    <button class="gift" onclick="gift(2)">💙<small>GIFT THREE</small></button>
+    <button class="gift" onclick="gift(0)">
+      🎁<small>GIFT ONE</small>
+    </button>
+
+    <button class="gift" onclick="gift(1)">
+      🎁<small>GIFT TWO</small>
+    </button>
+
+    <button class="gift" onclick="gift(2)">
+      🎁<small>GIFT THREE</small>
+    </button>
   </div>
-  <p id="giftMessage">Your surprise is waiting…</p>
-  <button onclick="showSection('memories')">OUR LITTLE MEMORIES →</button>
+
+  <p id="giftMessage" class="small">
+    Your surprises are waiting... ♡
+  </p>
+
+  <div id="giftReveal" class="gift-reveal hidden">
+    <img id="giftPhoto" src="memory-1.jpg" alt="Our memory">
+    <p id="giftCaption"></p>
+  </div>
+
+  <button onclick="showPage('music')">🎀 OPEN THE RIBBON</button>
+</div>
+
 </section>
 
-<section class="card hidden" id="memories">
-  <div class="hero-art">📸</div>
-  <h2>Our Little Memories</h2>
-  <p>Some moments I want to keep close to my heart. ♡</p>
-  <div class="memory-grid">
-    <img src="memory-1.jpg" alt="A lovely selfie together">
-    <img src="memory-2.jpg" alt="A memory together">
-    <img src="memory-3.jpg" alt="A memory together">
-  </div>
-  <button onclick="showSection('final')">ONE LAST THING ♡</button>
+
+<!-- PAGE 5: RIBBON AND SONG -->
+
+<section class="page" id="music">
+
+<div class="card">
+  <p class="small">A song that reminds me of you</p>
+  <div class="music-icon">🎀</div>
+  <h2>Bergema Sampai Selamanya</h2>
+  <p>Some songs hold the sweetest memories. This one is for you. ♡</p>
+
+  <audio id="birthdaySong" controls preload="metadata">
+    <source src="bergema-sampai-selamanya.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <p class="small">Play the song and enjoy this little moment. 🩵</p>
+
+  <button onclick="showPage('final')">💙 OPEN THE BLUE HEART</button>
+</div>
+
 </section>
 
-<section class="card hidden" id="final">
-  <div class="hero-art">🌙 ⭐ 💙</div>
-  <h2>For You, Always</h2>
-  <p>For you, Didi. I hope this song reminds you how much you mean to me. ♡</p>
-  <div class="music-box">
-    <div class="music-icon">🎵</div>
-    <h2 style="font-size:21px">Bergema Sampai Selamanya</h2>
-    <p class="music-caption">A LITTLE SONG, JUST FOR YOU ♡</p>
-    <audio id="birthdaySong" controls preload="metadata">
-      <source src="bergema-sampai-selamanya.mp3" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-    <p class="music-caption">Press play and enjoy your song.</p>
-  </div>
-  <p>Wherever life takes you, I hope you never forget how loved, appreciated, and special you are.</p>
-  <p><strong>Happy birthday, Didi. My love.</strong><br>Here's to more memories together. ♡</p>
-  <button class="secondary" onclick="showSection('welcome')">READ IT AGAIN ↺</button>
+
+<!-- PAGE 6: FINAL -->
+
+<section class="page" id="final">
+
+<div class="cloud one">☁️</div>
+<div class="cloud two">☁️</div>
+
+<div class="card">
+  <div class="big-heart">💙</div>
+
+  <h1>One Last Thing...</h1>
+
+  <p>
+    No matter where life takes us,<br>
+    I hope we keep making beautiful memories together.
+  </p>
+
+  <h2>Happy Birthday, Didi! ♡</h2>
+
+  <p>Always remember that you are loved.</p>
+
+  <button onclick="readAgain()">READ AGAIN ↺</button>
+
+  <footer>Made with love, just for you ♡</footer>
+</div>
+
 </section>
-<footer>MADE JUST FOR YOU ♥</footer>
-</main>
+
 
 <script>
-let passwordInput="";
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  if(id)document.getElementById(id).classList.add('active');
+
+let enteredPassword = "";
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+
+  window.scrollTo(0,0);
 }
-function startExperience(){showScreen('passwordScreen')}
-function updatePasswordDisplay(){
-  for(let i=0;i<4;i++)document.getElementById('digit'+i).textContent=passwordInput[i]?'♥':'♡';
-}
-function pressNumber(number){
-  if(passwordInput.length>=4)return;
-  passwordInput+=number;updatePasswordDisplay();
-  if(passwordInput.length===4)checkPassword();
-}
-function deleteNumber(){
-  passwordInput=passwordInput.slice(0,-1);updatePasswordDisplay();
-  document.getElementById('passwordMessage').textContent='Enter the 4-digit password ♡';
-}
-function clearPassword(){
-  passwordInput="";updatePasswordDisplay();
-  document.getElementById('passwordMessage').textContent='Enter the 4-digit password ♡';
-}
-function checkPassword(){
-  const message=document.getElementById('passwordMessage');
-  if(passwordInput==='2111'){
-    message.textContent='Correct! Welcome, Didi ♡';
-    setTimeout(()=>{
-      document.getElementById('passwordScreen').classList.remove('active');
-      document.getElementById('site').classList.add('started');
-      showSection('welcome');startHearts();
-    },700);
-  }else{
-    message.textContent='Oops! Try again, birthday boy ♡';
-    setTimeout(()=>{passwordInput="";updatePasswordDisplay();message.textContent='Enter the 4-digit password ♡'},900);
+
+function pressKey(number) {
+  if (enteredPassword.length >= 4) return;
+
+  enteredPassword += number;
+  updatePasswordDisplay();
+
+  if (enteredPassword.length === 4) {
+    setTimeout(checkPassword, 250);
   }
 }
-function showSection(id){
-  ['welcome','letter','readLetter','gifts','memories','final'].forEach(x=>document.getElementById(x).classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-  const env=document.getElementById('envelope');if(env)env.classList.remove('open');
-  window.scrollTo({top:0,behavior:'smooth'});
-  const song=document.getElementById('birthdaySong');
-  if(id==='final'){song.currentTime=0;}else if(song&&!song.paused){song.pause();}
+
+function updatePasswordDisplay() {
+  document.getElementById("passwordDisplay").textContent =
+    "●".repeat(enteredPassword.length) +
+    "_".repeat(4-enteredPassword.length);
 }
-function openEnvelope(){document.getElementById('envelope').classList.toggle('open')}
-function gift(i){
-  const messages=[
-    "Your first gift: a lifetime supply of hugs (redeemable anytime). ♡",
-    "Your second gift: I will always be cheering for you, in every little thing you do. 💙",
-    "Your third gift: one promise — to keep making lovely memories with you. 🩵"
+
+function clearPassword() {
+  enteredPassword = "";
+  updatePasswordDisplay();
+  document.getElementById("passwordMessage").textContent = "";
+}
+
+function checkPassword() {
+  if (enteredPassword === "2111") {
+    document.getElementById("passwordMessage").textContent = "Correct! ♡";
+    setTimeout(() => showPage("letter"), 500);
+  } else {
+    document.getElementById("passwordMessage").textContent =
+      "Oops! Try again, baby ♡";
+    enteredPassword = "";
+    updatePasswordDisplay();
+  }
+}
+
+let envelopeOpened = false;
+
+function openEnvelope() {
+  if (envelopeOpened) return;
+
+  envelopeOpened = true;
+
+  document.getElementById("envelope").classList.add("open");
+  document.getElementById("envelopeHint").textContent =
+    "A little message, just for you ♡";
+
+  setTimeout(() => {
+    document.getElementById("letterNext").classList.remove("hidden");
+  }, 900);
+}
+
+function gift(index) {
+  const photos = [
+    "memory-1.jpg",
+    "memory-2.jpg",
+    "memory-3.jpg"
   ];
-  document.getElementById('giftMessage').textContent=messages[i];
+
+  const captions = [
+    "A little memory, kept just for us. ♡",
+    "One of my favourite moments with you. 💙",
+    "More beautiful memories together. 🩵"
+  ];
+
+  document.getElementById("giftMessage").textContent =
+    "You opened a little surprise! ♡";
+
+  const photo = document.getElementById("giftPhoto");
+
+  photo.src = photos[index];
+  photo.alt = "Gift " + (index + 1) + " photo memory";
+
+  document.getElementById("giftCaption").textContent =
+    captions[index];
+
+  document.getElementById("giftReveal").classList.remove("hidden");
 }
-let heartIntervalStarted=false;
-function startHearts(){
-  if(heartIntervalStarted)return;heartIntervalStarted=true;
-  setInterval(()=>{
-    const heart=document.createElement('div');heart.className='floating-heart';
-    heart.textContent=['♡','♥','✦'][Math.floor(Math.random()*3)];
-    heart.style.left=Math.random()*100+'vw';heart.style.fontSize=(14+Math.random()*18)+'px';
-    document.body.appendChild(heart);setTimeout(()=>heart.remove(),7000);
-  },1200);
+
+function readAgain() {
+  const song = document.getElementById("birthdaySong");
+
+  song.pause();
+  song.currentTime = 0;
+
+  enteredPassword = "";
+  updatePasswordDisplay();
+
+  envelopeOpened = false;
+  document.getElementById("envelope").classList.remove("open");
+  document.getElementById("letterNext").classList.add("hidden");
+
+  document.getElementById("giftReveal").classList.add("hidden");
+  document.getElementById("giftMessage").textContent =
+    "Your surprises are waiting... ♡";
+
+  document.getElementById("passwordMessage").textContent = "";
+
+  showPage("welcome");
 }
+
 </script>
+
 </body>
 </html>
