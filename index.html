@@ -144,8 +144,12 @@ button:active {
 
 /* ENVELOPE */
 
+
+/* ENVELOPE */
+
 .envelope {
   width: 260px;
+  min-height: 175px;
   height: 175px;
   margin: 35px auto;
   position: relative;
@@ -153,7 +157,8 @@ button:active {
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 7px 0 #397db5;
-  transition: .4s;
+  transition: .5s;
+  padding-top: 10px;
 }
 
 .envelope:before {
@@ -180,28 +185,43 @@ button:active {
   z-index: 4;
 }
 
+.letter {
+  background: white;
+  padding: 0 18px;
+  border-radius: 12px;
+  position: relative;
+  width: 88%;
+  margin: 0 auto;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 5;
+  font-size: 13px;
+  line-height: 1.7;
+  transition: .7s ease;
+}
+
+.envelope.open {
+  height: auto;
+  min-height: 175px;
+  padding-bottom: 15px;
+}
+
 .envelope.open:before {
   transform: rotateX(180deg);
 }
 
-.letter {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  position: absolute;
-  width: 88%;
-  left: 6%;
-  top: 10px;
+.envelope.open .letter {
+  max-height: 450px;
   min-height: 150px;
-  transition: .7s;
-  opacity: 0;
-  z-index: 2;
-  font-size: 13px;
+  padding: 20px 18px;
+  margin-top: 15px;
+  opacity: 1;
 }
 
-.envelope.open .letter {
-  transform: translateY(-125px);
-  opacity: 1;
+.envelope.open:after {
+  display: none;
 }
 
 /* GIFTS */
