@@ -34,6 +34,8 @@ body {
   overflow-x: hidden;
 }
 
+/* BACKGROUND */
+
 .stars {
   position: fixed;
   inset: 0;
@@ -44,13 +46,13 @@ body {
     radial-gradient(#fff 1px, transparent 1px);
   background-size: 70px 70px, 110px 110px;
   background-position: 0 0, 30px 40px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+  z-index: 0;
 }
 
-.wrap {
-  width: min(720px, 92%);
-  margin: 0 auto;
-  padding: 34px 0 60px;
-  position: relative;
+@keyframes twinkle {
+  from { opacity: .3; }
+  to { opacity: .8; }
 }
 
 .cloud {
@@ -59,6 +61,7 @@ body {
   opacity: .55;
   animation: float 8s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
 }
 
 .c1 { top: 9%; left: 4%; }
@@ -66,7 +69,91 @@ body {
 .c3 { bottom: 10%; left: 8%; animation-delay: 4s; }
 
 @keyframes float {
-  50% { transform: translateY(-13px); }
+  50% { transform: translateY(-16px); }
+}
+
+/* INTRO SCREEN */
+
+.intro-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1.2s ease;
+}
+
+.intro-cloud {
+  font-size: 75px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 6px 0 #ffffff80);
+}
+
+.intro-label {
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #397db5;
+  margin-top: 25px;
+}
+
+.intro-screen h1 {
+  font-size: clamp(48px, 12vw, 76px);
+  color: #28649b;
+  text-shadow: 4px 4px 0 white;
+  margin: 15px 0;
+  animation: popIn 1s ease;
+}
+
+.intro-subtitle {
+  max-width: 320px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.intro-decoration {
+  color: #ffffff;
+  font-size: 28px;
+  letter-spacing: 12px;
+  margin: 20px 0 30px;
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+  to { transform: scale(1.15); opacity: .6; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* MAIN WEBSITE */
+
+.site {
+  display: none;
+}
+
+.site.started {
+  display: block;
+  animation: fadeIn 1s ease;
+}
+
+.wrap {
+  width: min(720px, 92%);
+  margin: 0 auto;
+  padding: 34px 0 60px;
+  position: relative;
+  z-index: 1;
 }
 
 header {
@@ -117,12 +204,19 @@ h1 {
   margin: 22px 0;
   text-align: center;
   backdrop-filter: blur(5px);
+  animation: cardIn .7s ease;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-art {
   font-size: clamp(52px, 13vw, 86px);
   margin: 8px 0 12px;
   filter: drop-shadow(0 5px 0 #a7d5f5);
+  animation: float 4s ease-in-out infinite;
 }
 
 h2 {
@@ -134,6 +228,8 @@ h2 {
 p {
   line-height: 1.75;
 }
+
+/* BUTTONS */
 
 button {
   border: 0;
@@ -163,8 +259,33 @@ button:active {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
+
+/* FLOATING HEARTS */
+
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 0;
+  animation: heartFloat 7s linear forwards;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* LETTER */
 
 .letter {
   font-family: Georgia, serif;
@@ -181,52 +302,6 @@ button:active {
   box-shadow: 0 8px 25px rgba(57,125,181,0.12);
 }
 
-.gift-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.gift {
-  background: #eaf6ff;
-  border: 1px solid #b8dcf7;
-  border-radius: 18px;
-  padding: 16px 8px;
-  cursor: pointer;
-  font-size: 34px;
-  transition: .2s;
-}
-
-.gift:hover {
-  transform: translateY(-5px);
-}
-
-.gift small {
-  display: block;
-  font: 12px Arial, sans-serif;
-  color: #477da8;
-  margin-top: 8px;
-}
-
-#giftMessage {
-  min-height: 48px;
-  font-size: 16px;
-  color: #28649b;
-}
-
-footer {
-  text-align: center;
-  font: 12px Arial, sans-serif;
-  letter-spacing: 1px;
-  color: #5c8bb1;
-  margin-top: 30px;
-}
-
-.heart {
-  color: #5c9ed5;
-}
-
 /* ENVELOPE */
 
 .envelope-stage {
@@ -241,7 +316,7 @@ footer {
 
 .envelope {
   position: relative;
-  width: min(360px, 90vw);
+  width: min(360px, 90%);
   height: 225px;
   margin: 0 auto 20px;
   cursor: pointer;
@@ -319,11 +394,68 @@ footer {
   margin-top: 5px;
 }
 
+/* GIFTS */
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.gift {
+  background: #eaf6ff;
+  border: 1px solid #b8dcf7;
+  border-radius: 18px;
+  padding: 16px 8px;
+  cursor: pointer;
+  font-size: 34px;
+  transition: .3s;
+  box-shadow: 0 5px 0 #b8dcf7;
+}
+
+.gift:hover {
+  transform: translateY(-7px) rotate(-3deg);
+}
+
+.gift:active {
+  transform: scale(.9);
+}
+
+.gift small {
+  display: block;
+  font: 12px Arial, sans-serif;
+  color: #477da8;
+  margin-top: 8px;
+}
+
+#giftMessage {
+  min-height: 48px;
+  font-size: 16px;
+  color: #28649b;
+  margin-top: 22px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  font: 12px Arial, sans-serif;
+  letter-spacing: 1px;
+  color: #5c8bb1;
+  margin-top: 30px;
+}
+
+.heart {
+  color: #5c9ed5;
+}
+
 @media(max-width:480px) {
   .card { padding: 21px 17px; }
   .gift-grid { gap: 7px; }
   .gift { padding: 13px 4px; }
   .subtitle { font-size: 16px; }
+  .envelope-stage { height: 390px; }
 }
 </style>
 </head>
@@ -331,14 +463,43 @@ footer {
 <body>
 
 <div class="stars"></div>
+
 <div class="cloud c1">☁️</div>
 <div class="cloud c2">☁️</div>
 <div class="cloud c3">☁️</div>
 
-<main class="wrap">
+<!-- INTRO SCREEN -->
+
+<section class="intro-screen" id="intro">
+
+  <div class="intro-cloud">☁️</div>
+
+  <p class="intro-label">A SPECIAL DAY FOR</p>
+
+  <h1>For Didi ♡</h1>
+
+  <p class="intro-subtitle">
+    Someone special deserves something special.
+    A little surprise made with love.
+  </p>
+
+  <div class="intro-decoration">✦ ♡ ✦</div>
+
+  <button onclick="startExperience()">
+    START ♡
+  </button>
+
+</section>
+
+<!-- MAIN WEBSITE -->
+
+<main class="wrap site" id="site">
 
 <header>
-  <span class="label">A little surprise for someone special</span>
+
+  <span class="label">
+    A little surprise for someone special
+  </span>
 
   <h1>Happy Birthday, Didi!</h1>
 
@@ -348,7 +509,10 @@ footer {
   </p>
 
   <div class="pixel">✦ MADE WITH LOVE ✦</div>
+
 </header>
+
+<!-- WELCOME -->
 
 <section class="card" id="welcome">
 
@@ -367,6 +531,8 @@ footer {
 
 </section>
 
+<!-- LETTER -->
+
 <section class="card hidden" id="letter">
 
   <div class="hero-art">💌</div>
@@ -375,7 +541,8 @@ footer {
 
   <div class="envelope-stage">
 
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="envelope" id="envelope"
+         onclick="openEnvelope()">
 
       <div class="envelope-back"></div>
 
@@ -393,7 +560,6 @@ With lots of love,
 Your favourite person ♡</div>
 
       <div class="envelope-front"></div>
-
       <div class="envelope-flap"></div>
 
     </div>
@@ -413,6 +579,8 @@ Your favourite person ♡</div>
   </p>
 
 </section>
+
+<!-- GIFTS -->
 
 <section class="card hidden" id="gifts">
 
@@ -453,6 +621,8 @@ Your favourite person ♡</div>
 
 </section>
 
+<!-- FINAL -->
+
 <section class="card hidden" id="final">
 
   <div class="hero-art">🌙 ⭐ 💙</div>
@@ -484,6 +654,23 @@ Your favourite person ♡</div>
 
 <script>
 
+/* START INTRO */
+
+function startExperience() {
+  document.getElementById('intro').style.display = 'none';
+
+  document.getElementById('site').classList.add('started');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  startHearts();
+}
+
+/* SECTION NAVIGATION */
+
 function showSection(id) {
 
   ['welcome', 'letter', 'gifts', 'final'].forEach(x => {
@@ -504,23 +691,49 @@ function showSection(id) {
   });
 }
 
+/* OPEN ENVELOPE */
+
 function openEnvelope() {
   document.getElementById('envelope').classList.toggle('open');
 }
 
+/* GIFT MESSAGES */
+
 function gift(i) {
 
   const messages = [
-
     "Your first gift: a lifetime supply of hugs (redeemable anytime).",
 
     "Your second gift: I will always be cheering for you, in every little thing you do.",
 
     "Your third gift: one promise — to keep making lovely memories with you. 💙"
-
   ];
 
   document.getElementById('giftMessage').textContent = messages[i];
+
+}
+
+/* FLOATING HEARTS */
+
+function startHearts() {
+
+  setInterval(() => {
+
+    const heart = document.createElement('div');
+
+    heart.className = 'floating-heart';
+    heart.textContent = ['♡', '♥', '✦'][Math.floor(Math.random() * 3)];
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
+
+  }, 1200);
 
 }
 
