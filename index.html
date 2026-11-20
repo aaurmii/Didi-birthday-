@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,699 +5,147 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b9dcff">
 <title>For Didi ♡</title>
-
 <style>
-:root {
-  --sky: #eaf6ff;
-  --blue: #a9d5ff;
-  --deep: #397db5;
-  --ink: #244765;
-  --white: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--ink);
-  background: linear-gradient(180deg, #b9dcff 0%, #eaf6ff 55%, #d4eaff 100%);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* BACKGROUND */
-
-.stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .55;
-  background-image:
-    radial-gradient(#fff 1.5px, transparent 1.5px),
-    radial-gradient(#fff 1px, transparent 1px);
-  background-size: 70px 70px, 110px 110px;
-  background-position: 0 0, 30px 40px;
-  animation: twinkle 4s ease-in-out infinite alternate;
-  z-index: 0;
-}
-
-@keyframes twinkle {
-  from { opacity: .3; }
-  to { opacity: .8; }
-}
-
-.cloud {
-  position: fixed;
-  font-size: 46px;
-  opacity: .55;
-  animation: float 8s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.c1 { top: 9%; left: 4%; }
-.c2 { top: 22%; right: 5%; animation-delay: 2s; }
-.c3 { bottom: 10%; left: 8%; animation-delay: 4s; }
-
-@keyframes float {
-  50% { transform: translateY(-16px); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes popIn {
-  from { opacity: 0; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* INTRO SCREEN */
-
-.intro-screen {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 25px;
-  position: relative;
-  z-index: 2;
-  animation: fadeIn 1.2s ease;
-}
-
-.intro-cloud {
-  font-size: 75px;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 6px 0 #ffffff80);
-}
-
-.intro-label {
-  font-family: monospace;
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #397db5;
-  margin-top: 25px;
-}
-
-.intro-screen h1 {
-  font-size: clamp(48px, 12vw, 76px);
-  color: #28649b;
-  text-shadow: 4px 4px 0 white;
-  margin: 15px 0;
-  animation: popIn 1s ease;
-}
-
-.intro-subtitle {
-  max-width: 320px;
-  line-height: 1.8;
-  font-size: 16px;
-}
-
-.intro-decoration {
-  color: white;
-  font-size: 28px;
-  letter-spacing: 12px;
-  margin: 20px 0 30px;
-  animation: sparkle 2s infinite alternate;
-}
-
-@keyframes sparkle {
-  to { transform: scale(1.15); opacity: .6; }
-}
-
-/* PASSWORD SCREEN */
-
-.password-screen {
-  min-height: 100vh;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 25px 18px;
-  position: relative;
-  z-index: 2;
-  animation: fadeIn 1s ease;
-}
-
-.password-screen.show {
-  display: flex;
-}
-
-.password-title {
-  font-family: monospace;
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: #397db5;
-  margin: 15px 0;
-}
-
-.pixel-couple {
-  font-size: 75px;
-  margin: 10px 0;
-  filter: drop-shadow(3px 5px 0 #ffffff);
-  animation: float 3s ease-in-out infinite;
-}
-
-.password-subtitle {
-  font-size: 14px;
-  color: #477da8;
-  margin-bottom: 20px;
-}
-
-.password-display {
-  display: flex;
-  justify-content: center;
-  gap: 13px;
-  margin: 12px 0 20px;
-}
-
-.password-dot {
-  width: 43px;
-  height: 43px;
-  border: 2px solid white;
-  border-radius: 13px;
-  background: #ffffffa8;
-  display: grid;
-  place-items: center;
-  font-size: 23px;
-  color: #397db5;
-  box-shadow: 0 4px 10px #397db522;
-}
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(3, 65px);
-  gap: 12px;
-  justify-content: center;
-  margin: 10px auto;
-}
-
-.keypad button {
-  width: 65px;
-  height: 58px;
-  padding: 0;
-  border-radius: 20px;
-  background: #ffffffd9;
-  color: #397db5;
-  border: 2px solid white;
-  box-shadow: 0 4px 0 #a9d5ff;
-  font-size: 20px;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.keypad button:active {
-  transform: scale(.9);
-}
-
-.keypad .special-key {
-  background: #d9edff;
-  font-size: 15px;
-}
-
-.password-message {
-  min-height: 28px;
-  color: #397db5;
-  font-size: 13px;
-  margin-top: 12px;
-}
-
-.password-hint {
-  color: #6b9bc0;
-  font-size: 11px;
-  letter-spacing: 1px;
-  margin-top: 5px;
-}
-
-/* MAIN WEBSITE */
-
-.site {
-  display: none;
-}
-
-.site.started {
-  display: block;
-  animation: fadeIn 1s ease;
-}
-
-.wrap {
-  width: min(720px, 92%);
-  margin: 0 auto;
-  padding: 34px 0 60px;
-  position: relative;
-  z-index: 1;
-}
-
-header {
-  text-align: center;
-  padding: 28px 10px 18px;
-}
-
-.label {
-  display: inline-block;
-  background: #ffffff99;
-  padding: 8px 16px;
-  border: 1px solid white;
-  border-radius: 30px;
-  font: 12px Arial, sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: clamp(42px, 9vw, 70px);
-  line-height: 1.02;
-  margin: 20px 0 10px;
-  color: #28649b;
-  text-shadow: 3px 3px 0 white;
-}
-
-.subtitle {
-  font-size: 18px;
-  margin: 0 auto;
-  max-width: 440px;
-  line-height: 1.6;
-}
-
-.pixel {
-  font-family: monospace;
-  letter-spacing: 2px;
-  font-size: 14px;
-  color: #4f88b8;
-  margin: 18px 0;
-}
-
-.card {
-  background: #ffffffd9;
-  border: 2px solid white;
-  border-radius: 24px;
-  padding: 26px;
-  box-shadow: 0 12px 35px #4d8db522;
-  margin: 22px 0;
-  text-align: center;
-  backdrop-filter: blur(5px);
-  animation: cardIn .7s ease;
-}
-
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-art {
-  font-size: clamp(52px, 13vw, 86px);
-  margin: 8px 0 12px;
-  filter: drop-shadow(0 5px 0 #a7d5f5);
-  animation: float 4s ease-in-out infinite;
-}
-
-h2 {
-  color: #28649b;
-  margin: 8px 0 12px;
-  font-size: 28px;
-}
-
-p {
-  line-height: 1.75;
-}
-
-/* BUTTONS */
-
-button {
-  border: 0;
-  border-radius: 999px;
-  background: #78b9ed;
-  color: white;
-  padding: 14px 25px;
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 5px 0 #397db5;
-  transition: .2s;
-}
-
-button:hover {
-  transform: translateY(-3px);
-}
-
-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 #397db5;
-}
-
-.secondary {
-  background: #e6f4ff;
-  color: #28649b;
-  box-shadow: 0 5px 0 #a5cfea;
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* FLOATING HEARTS */
-
-.floating-heart {
-  position: fixed;
-  bottom: -30px;
-  color: white;
-  pointer-events: none;
-  z-index: 0;
-  animation: heartFloat 7s linear forwards;
-}
-
-@keyframes heartFloat {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  15% { opacity: .8; }
-  100% {
-    transform: translateY(-110vh) rotate(35deg);
-    opacity: 0;
-  }
-}
-
-/* LETTER */
-
-.letter {
-  font-family: Georgia, serif;
-  font-size: 15px;
-  line-height: 2;
-  font-style: italic;
-  text-align: left;
-  color: #315675;
-  background: linear-gradient(135deg, #fff, #f0f8ff);
-  border: 1px solid #b9dcf7;
-  border-radius: 20px;
-  padding: 25px;
-  white-space: pre-line;
-  box-shadow: 0 8px 25px rgba(57,125,181,0.12);
-}
-
-/* ENVELOPE */
-
-.envelope-stage {
-  width: 100%;
-  height: 410px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  margin: 20px auto 5px;
-}
-
-.envelope {
-  position: relative;
-  width: min(360px, 90%);
-  height: 225px;
-  margin: 0 auto 20px;
-  cursor: pointer;
-  perspective: 1000px;
-}
-
-.envelope-back {
-  position: absolute;
-  inset: 0;
-  background: #a9d5ff;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(57,125,181,.2);
-  z-index: 1;
-}
-
-.envelope .letter {
-  position: absolute;
-  width: 90%;
-  height: 205px;
-  left: 5%;
-  bottom: 7px;
-  z-index: 2;
-  padding: 18px;
-  font-size: 14px;
-  line-height: 1.8;
-  overflow-y: auto;
-  transform: translateY(0);
-  transition: transform 1s ease;
-}
-
-.envelope-front {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  background: #78b9ed;
-  clip-path: polygon(
-    0 0,
-    50% 58%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-  border-radius: 0 0 10px 10px;
-  pointer-events: none;
-}
-
-.envelope-flap {
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  border-left: min(180px, 45vw) solid transparent;
-  border-right: min(180px, 45vw) solid transparent;
-  border-top: 120px solid #397db5;
-  transform-origin: top center;
-  transition: transform .8s ease, z-index .1s .4s;
-  pointer-events: none;
-}
-
-.envelope.open .envelope-flap {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-.envelope.open .letter {
-  transform: translateY(-170px);
-  transition-delay: .35s;
-}
-
-.envelope-hint {
-  color: #397db5;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-/* GIFTS */
-
-.gift-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.gift {
-  background: #eaf6ff;
-  border: 1px solid #b8dcf7;
-  border-radius: 18px;
-  padding: 16px 8px;
-  cursor: pointer;
-  font-size: 34px;
-  transition: .3s;
-  box-shadow: 0 5px 0 #b8dcf7;
-}
-
-.gift:hover {
-  transform: translateY(-7px) rotate(-3deg);
-}
-
-.gift:active {
-  transform: scale(.9);
-}
-
-.gift small {
-  display: block;
-  font: 12px Arial, sans-serif;
-  color: #477da8;
-  margin-top: 8px;
-}
-
-#giftMessage {
-  min-height: 48px;
-  font-size: 16px;
-  color: #28649b;
-  margin-top: 22px;
-}
-
-/* FOOTER */
-
-footer {
-  text-align: center;
-  font: 12px Arial, sans-serif;
-  letter-spacing: 1px;
-  color: #5c8bb1;
-  margin-top: 30px;
-}
-
-.heart {
-  color: #5c9ed5;
-}
-
-@media(max-width:480px) {
-  .card { padding: 21px 17px; }
-  .gift-grid { gap: 7px; }
-  .gift { padding: 13px 4px; }
-  .subtitle { font-size: 16px; }
-  .envelope-stage { height: 390px; }
-}
+:root{--sky:#eaf6ff;--blue:#a9d5ff;--mid:#78b9ed;--deep:#397db5;--ink:#244765;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#b9dcff 0%,#eaf6ff 55%,#d4eaff 100%)}
+button{border:0;border-radius:999px;background:#78b9ed;color:white;padding:14px 25px;font-size:15px;cursor:pointer;box-shadow:0 5px 0 #397db5;transition:.2s}
+button:hover{transform:translateY(-3px)}button:active{transform:translateY(2px);box-shadow:0 2px 0 #397db5}
+.secondary{background:#e6f4ff;color:#28649b;box-shadow:0 5px 0 #a5cfea}
+.stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(#fff 1.5px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1px);background-size:70px 70px,110px 110px;background-position:0 0,30px 40px;animation:twinkle 4s ease-in-out infinite alternate;z-index:0}
+@keyframes twinkle{from{opacity:.3}to{opacity:.85}}
+.cloud{position:fixed;font-size:46px;opacity:.55;pointer-events:none;z-index:0;animation:float 8s ease-in-out infinite}
+.c1{top:9%;left:4%}.c2{top:22%;right:5%;animation-delay:2s}.c3{bottom:10%;left:8%;animation-delay:4s}
+@keyframes float{50%{transform:translateY(-16px)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@keyframes twinkleText{50%{opacity:.55;transform:scale(1.08)}}
+.screen{min-height:100svh;display:none;position:relative;z-index:2;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:28px 18px;animation:fade .8s ease}
+.screen.active{display:flex}
+.pixel-label{font:12px monospace;letter-spacing:3px;color:#397db5;text-transform:uppercase}
+.intro-cloud{font-size:76px;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 6px 0 #ffffff80)}
+.intro h1{font-size:clamp(48px,12vw,76px);color:#28649b;text-shadow:4px 4px white;margin:14px 0}
+.intro p{max-width:330px;line-height:1.8}
+.sparkles{font-size:27px;letter-spacing:10px;color:white;margin:15px 0 28px;animation:twinkleText 2s infinite alternate}
+.pixel-panel{width:min(440px,100%);padding:25px 18px;background:#ffffffc9;border:3px solid white;outline:2px dashed #8fc6f2;outline-offset:5px;box-shadow:8px 8px 0 #79b5e5;border-radius:8px}
+.couple{font-size:72px;line-height:1.3;margin:0 0 10px;filter:drop-shadow(3px 4px white);animation:bob 3s ease-in-out infinite}
+.password-title{font:13px monospace;letter-spacing:2px;color:#397db5}
+h2{color:#28649b;margin:10px 0 12px;font-size:clamp(24px,6vw,32px)}
+.password-subtitle{font-size:14px;color:#477da8;margin-bottom:16px}
+.password-display{display:flex;justify-content:center;gap:13px;margin:15px 0 20px}
+.password-dot{width:43px;height:43px;border:2px solid white;border-radius:8px;background:#eaf6ff;display:grid;place-items:center;font-size:23px;color:#397db5;box-shadow:3px 3px 0 #a9d5ff}
+.keypad{display:grid;grid-template-columns:repeat(3,62px);gap:11px;justify-content:center;margin:10px auto}
+.keypad button{width:62px;height:55px;padding:0;border-radius:8px;background:#eaf6ff;color:#397db5;border:2px solid white;box-shadow:0 4px 0 #a9d5ff;font:bold 20px monospace}
+.keypad .special{font-size:12px;background:#d9edff}
+.password-message{min-height:25px;font-size:13px;color:#397db5;margin:12px 0 4px}
+.password-hint{font:10px monospace;letter-spacing:2px;color:#6b9bc0}
+.wrap{width:min(720px,92%);margin:0 auto;padding:25px 0 55px;position:relative;z-index:1}
+.site{display:none}.site.started{display:block;animation:fade 1s ease}
+header{text-align:center;padding:24px 10px 18px}
+.label{display:inline-block;background:#ffffff99;padding:8px 16px;border:1px solid white;border-radius:30px;font:12px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+header h1{font-size:clamp(40px,9vw,68px);line-height:1.05;margin:20px 0 10px;color:#28649b;text-shadow:3px 3px white}
+.subtitle{font-size:17px;margin:0 auto;max-width:450px;line-height:1.7}
+.pixel{font:12px monospace;letter-spacing:2px;color:#4f88b8;margin:18px 0}
+.card{background:#ffffffdc;border:2px solid white;border-radius:20px;padding:25px;margin:22px 0;text-align:center;box-shadow:0 10px 30px #4d8db522;backdrop-filter:blur(5px);animation:pop .6s ease}
+.hidden{display:none!important}
+.hero-art{font-size:clamp(55px,13vw,82px);margin:8px 0 12px;filter:drop-shadow(0 5px 0 #a7d5f5);animation:bob 4s ease-in-out infinite}
+p{line-height:1.75}
+.envelope-stage{width:100%;height:330px;display:flex;justify-content:center;align-items:flex-end;position:relative;margin:15px auto 0}
+.envelope{position:relative;width:min(340px,88%);height:205px;margin:0 auto 18px;cursor:pointer;perspective:1000px}
+.envelope-back{position:absolute;inset:0;background:#a9d5ff;border-radius:8px;box-shadow:0 8px 20px #397db533;z-index:1}
+.letter-peek{position:absolute;width:90%;height:185px;left:5%;bottom:6px;z-index:2;padding:15px;background:linear-gradient(135deg,#fff,#f0f8ff);border:1px solid #b9dcf7;border-radius:5px;color:#315675;font:13px Georgia,serif;line-height:1.7;overflow:hidden;transition:transform 1s ease}
+.envelope-front{position:absolute;inset:0;z-index:4;background:#78b9ed;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:0 0 8px 8px;pointer-events:none}
+.envelope-flap{position:absolute;width:0;height:0;top:0;left:0;z-index:5;border-left:min(170px,44vw) solid transparent;border-right:min(170px,44vw) solid transparent;border-top:110px solid #397db5;transform-origin:top center;transition:transform .8s ease,z-index .1s .4s;pointer-events:none}
+.envelope.open .envelope-flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .letter-peek{transform:translateY(-145px);transition-delay:.3s}
+.envelope-hint{font-size:13px;color:#397db5}
+.full-letter{background:linear-gradient(135deg,#fff,#f0f8ff);border:2px dashed #a9d5ff;border-radius:8px;padding:22px;text-align:left;white-space:pre-line;font:15px/1.9 Georgia,serif;color:#315675}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.gift{background:#eaf6ff;border:2px solid white;border-radius:10px;padding:15px 6px;color:#397db5;box-shadow:0 5px 0 #a9d5ff;font-size:34px}
+.gift small{display:block;font:11px monospace;color:#477da8;margin-top:8px}
+#giftMessage{min-height:52px;color:#28649b}
+.memory-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:18px 0}
+.memory-grid img{width:100%;height:290px;object-fit:cover;border:5px solid white;border-radius:12px;box-shadow:0 5px 0 #a9d5ff}
+.memory-grid img:first-child{grid-column:1/-1;height:340px;object-position:center 35%}
+.music-box{background:#eaf6ff;border:2px dashed #9bcaf0;border-radius:12px;padding:18px;margin:18px 0}
+.music-icon{font-size:55px;animation:bob 3s infinite}
+audio{width:100%;margin:12px 0}
+.music-caption{font:11px monospace;letter-spacing:1px;color:#5c8bb1}
+.floating-heart{position:fixed;bottom:-30px;color:white;pointer-events:none;z-index:0;animation:heartFloat 7s linear forwards}
+@keyframes heartFloat{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+footer{text-align:center;font:11px monospace;letter-spacing:2px;color:#5c8bb1;margin:30px 0}
+@media(max-width:480px){.card{padding:21px 16px}.gift-grid{gap:7px}.gift{padding:12px 3px}.subtitle{font-size:15px}.envelope-stage{height:300px}.memory-grid img{height:220px}.memory-grid img:first-child{height:270px}}
 </style>
 </head>
-
 <body>
+<div class="stars"></div><div class="cloud c1">☁️</div><div class="cloud c2">☁️</div><div class="cloud c3">☁️</div>
 
-<div class="stars"></div>
-
-<div class="cloud c1">☁️</div>
-<div class="cloud c2">☁️</div>
-<div class="cloud c3">☁️</div>
-
-<!-- INTRO SCREEN -->
-
-<section class="intro-screen" id="intro">
-
+<section class="screen intro active" id="intro">
   <div class="intro-cloud">☁️</div>
-
-  <p class="intro-label">A SPECIAL DAY FOR</p>
-
+  <p class="pixel-label">A SPECIAL DAY FOR</p>
   <h1>For Didi ♡</h1>
-
-  <p class="intro-subtitle">
-    Someone special deserves something special.
-    A little surprise made with love.
-  </p>
-
-  <div class="intro-decoration">✦ ♡ ✦</div>
-
-  <button onclick="startExperience()">
-    START ♡
-  </button>
-
+  <p>Someone special deserves something special. A little surprise made with love.</p>
+  <div class="sparkles">✦ ♡ ✦</div>
+  <button onclick="startExperience()">START ♡</button>
 </section>
 
-<!-- PASSWORD SCREEN -->
-
-<section class="password-screen" id="passwordScreen">
-
-  <div class="pixel-couple">👩🏻‍❤️‍👨🏻</div>
-
-  <p class="password-title">
-    A LITTLE SECRET FOR YOU
-  </p>
-
-  <h2>Guess the Password ♡</h2>
-
-  <p class="password-subtitle">
-    Only someone special knows the answer...
-  </p>
-
-  <div class="password-display">
-    <div class="password-dot" id="digit0">♡</div>
-    <div class="password-dot" id="digit1">♡</div>
-    <div class="password-dot" id="digit2">♡</div>
-    <div class="password-dot" id="digit3">♡</div>
+<section class="screen" id="passwordScreen">
+  <div class="pixel-panel">
+    <div class="couple">👩🏻‍❤️‍👨🏻</div>
+    <p class="password-title">A LITTLE SECRET FOR YOU</p>
+    <h2>Guess the Password ♡</h2>
+    <p class="password-subtitle">Only someone special knows the answer...</p>
+    <div class="password-display">
+      <div class="password-dot" id="digit0">♡</div><div class="password-dot" id="digit1">♡</div>
+      <div class="password-dot" id="digit2">♡</div><div class="password-dot" id="digit3">♡</div>
+    </div>
+    <div class="keypad">
+      <button onclick="pressNumber('1')">1</button><button onclick="pressNumber('2')">2</button><button onclick="pressNumber('3')">3</button>
+      <button onclick="pressNumber('4')">4</button><button onclick="pressNumber('5')">5</button><button onclick="pressNumber('6')">6</button>
+      <button onclick="pressNumber('7')">7</button><button onclick="pressNumber('8')">8</button><button onclick="pressNumber('9')">9</button>
+      <button class="special" onclick="clearPassword()">CLEAR</button><button onclick="pressNumber('0')">0</button><button class="special" onclick="deleteNumber()">⌫</button>
+    </div>
+    <p class="password-message" id="passwordMessage">Enter the 4-digit password ♡</p>
+    <p class="password-hint">MADE WITH LOVE FOR DIDI</p>
   </div>
-
-  <div class="keypad">
-
-    <button onclick="pressNumber('1')">1</button>
-    <button onclick="pressNumber('2')">2</button>
-    <button onclick="pressNumber('3')">3</button>
-
-    <button onclick="pressNumber('4')">4</button>
-    <button onclick="pressNumber('5')">5</button>
-    <button onclick="pressNumber('6')">6</button>
-
-    <button onclick="pressNumber('7')">7</button>
-    <button onclick="pressNumber('8')">8</button>
-    <button onclick="pressNumber('9')">9</button>
-
-    <button class="special-key" onclick="clearPassword()">CLEAR</button>
-    <button onclick="pressNumber('0')">0</button>
-    <button class="special-key" onclick="deleteNumber()">⌫</button>
-
-  </div>
-
-  <p class="password-message" id="passwordMessage">
-    Enter the 4-digit password ♡
-  </p>
-
-  <p class="password-hint">
-    MADE WITH LOVE FOR DIDI
-  </p>
-
 </section>
-
-<!-- MAIN WEBSITE -->
 
 <main class="wrap site" id="site">
-
 <header>
-
-  <span class="label">
-    A little surprise for someone special
-  </span>
-
-  <h1>Happy Birthday, Didi!</h1>
-
-  <p class="subtitle">
-    To my favourite person, Didi — today is all about you.
-    I hope this little corner of the internet makes you smile. ♡
-  </p>
-
+  <span class="label">A little surprise for someone special</span>
+  <h1>Happy Birthday,<br>Didi!</h1>
+  <p class="subtitle">To my favourite person, Didi — today is all about you. I hope this little corner of the internet makes you smile. ♡</p>
   <div class="pixel">✦ MADE WITH LOVE ✦</div>
-
 </header>
 
-<!-- WELCOME -->
-
 <section class="card" id="welcome">
-
   <div class="hero-art">🎂 🧸 🎈</div>
-
-  <h2>Ready for your surprise?</h2>
-
-  <p>
-    I made something just for you.
-    Take your time and enjoy every little part of it.
-  </p>
-
-  <button onclick="showSection('letter')">
-    Click Me, Birthday Boy! ♡
-  </button>
-
+  <h2>Happy Birthday, Love!</h2>
+  <p>I made this little world just for you. Are you ready for your surprise?</p>
+  <button onclick="showSection('letter')">START YOUR SURPRISE ♡</button>
 </section>
 
-<!-- LETTER -->
-
 <section class="card hidden" id="letter">
-
   <div class="hero-art">💌</div>
-
-  <h2>A Little Birthday Letter</h2>
-
+  <h2>A Little Letter for You</h2>
+  <p>Something special is waiting inside...</p>
   <div class="envelope-stage">
-
     <div class="envelope" id="envelope" onclick="openEnvelope()">
-
       <div class="envelope-back"></div>
+      <div class="letter-peek">A letter for you, Didi ♡<br><br>Tap to open...</div>
+      <div class="envelope-front"></div><div class="envelope-flap"></div>
+    </div>
+  </div>
+  <p class="envelope-hint">♡ Tap the envelope to open it ♡</p>
+  <button onclick="showSection('readLetter')">READ YOUR LETTER →</button>
+</section>
 
-      <div class="letter">Dear Didi,
+<section class="card hidden" id="readLetter">
+  <div class="hero-art">🩵</div>
+  <h2>To My Favourite Person</h2>
+  <div class="full-letter">Dear Didi,
 
 Happy birthday to the person who makes ordinary days feel a little more special.
 
@@ -710,254 +157,119 @@ Thank you for being you. You deserve all the beautiful things life has to offer.
 
 With lots of love,
 Your favourite person ♡</div>
-
-      <div class="envelope-front"></div>
-      <div class="envelope-flap"></div>
-
-    </div>
-
-  </div>
-
-  <p class="envelope-hint">
-    A little letter just for you ♡
-    <br>
-    Tap the envelope to open it.
-  </p>
-
-  <p>
-    <button onclick="showSection('gifts')">
-      There's more… 🎁
-    </button>
-  </p>
-
+  <p><button onclick="showSection('gifts')">CHOOSE YOUR GIFT →</button></p>
 </section>
-
-<!-- GIFTS -->
 
 <section class="card hidden" id="gifts">
-
   <div class="hero-art">🎁</div>
-
-  <h2>Choose a Little Gift</h2>
-
-  <p>
-    Pick any box. Each one has a tiny message for you.
-  </p>
-
+  <h2>Choose Your Gift</h2>
+  <p>Pick any little gift. Each one has a message for you.</p>
   <div class="gift-grid">
-
-    <button class="gift" onclick="gift(0)">
-      🎁
-      <small>Gift one</small>
-    </button>
-
-    <button class="gift" onclick="gift(1)">
-      🎀
-      <small>Gift two</small>
-    </button>
-
-    <button class="gift" onclick="gift(2)">
-      💙
-      <small>Gift three</small>
-    </button>
-
+    <button class="gift" onclick="gift(0)">🎁<small>GIFT ONE</small></button>
+    <button class="gift" onclick="gift(1)">🎀<small>GIFT TWO</small></button>
+    <button class="gift" onclick="gift(2)">💙<small>GIFT THREE</small></button>
   </div>
-
-  <p id="giftMessage">
-    Your surprise is waiting…
-  </p>
-
-  <button class="secondary" onclick="showSection('final')">
-    One last thing ♡
-  </button>
-
+  <p id="giftMessage">Your surprise is waiting…</p>
+  <button onclick="showSection('memories')">OUR LITTLE MEMORIES →</button>
 </section>
 
-<!-- FINAL -->
+<section class="card hidden" id="memories">
+  <div class="hero-art">📸</div>
+  <h2>Our Little Memories</h2>
+  <p>Some moments I want to keep close to my heart. ♡</p>
+  <div class="memory-grid">
+    <img src="memory-1.jpg" alt="A lovely selfie together">
+    <img src="memory-2.jpg" alt="A memory together">
+    <img src="memory-3.jpg" alt="A memory together">
+  </div>
+  <button onclick="showSection('final')">ONE LAST THING ♡</button>
+</section>
 
 <section class="card hidden" id="final">
-
   <div class="hero-art">🌙 ⭐ 💙</div>
-
-  <h2>One More Wish for You</h2>
-
-  <p>
-    Wherever life takes you, I hope you never forget
-    how loved, appreciated, and special you are.
-  </p>
-
-  <p>
-    <strong>Happy birthday, Didi. My love.</strong>
-    <br>
-    Here's to more memories together. ♡
-  </p>
-
-  <button onclick="showSection('welcome')">
-    Read it again ↺
-  </button>
-
+  <h2>For You, Always</h2>
+  <p>For you, Didi. I hope this song reminds you how much you mean to me. ♡</p>
+  <div class="music-box">
+    <div class="music-icon">🎵</div>
+    <h2 style="font-size:21px">Bergema Sampai Selamanya</h2>
+    <p class="music-caption">A LITTLE SONG, JUST FOR YOU ♡</p>
+    <audio id="birthdaySong" controls preload="metadata">
+      <source src="bergema-sampai-selamanya.mp3" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+    <p class="music-caption">Press play and enjoy your song.</p>
+  </div>
+  <p>Wherever life takes you, I hope you never forget how loved, appreciated, and special you are.</p>
+  <p><strong>Happy birthday, Didi. My love.</strong><br>Here's to more memories together. ♡</p>
+  <button class="secondary" onclick="showSection('welcome')">READ IT AGAIN ↺</button>
 </section>
-
-<footer>
-  MADE JUST FOR YOU <span class="heart">♥</span>
-</footer>
-
+<footer>MADE JUST FOR YOU ♥</footer>
 </main>
 
 <script>
-
-/* PASSWORD */
-
-let passwordInput = "";
-
-function startExperience() {
-  document.getElementById('intro').style.display = 'none';
-  document.getElementById('passwordScreen').classList.add('show');
+let passwordInput="";
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  if(id)document.getElementById(id).classList.add('active');
 }
-
-function updatePasswordDisplay() {
-  for (let i = 0; i < 4; i++) {
-    document.getElementById('digit' + i).textContent =
-      passwordInput[i] ? '♥' : '♡';
-  }
+function startExperience(){showScreen('passwordScreen')}
+function updatePasswordDisplay(){
+  for(let i=0;i<4;i++)document.getElementById('digit'+i).textContent=passwordInput[i]?'♥':'♡';
 }
-
-function pressNumber(number) {
-  if (passwordInput.length >= 4) return;
-
-  passwordInput += number;
-  updatePasswordDisplay();
-
-  if (passwordInput.length === 4) {
-    checkPassword();
-  }
+function pressNumber(number){
+  if(passwordInput.length>=4)return;
+  passwordInput+=number;updatePasswordDisplay();
+  if(passwordInput.length===4)checkPassword();
 }
-
-function deleteNumber() {
-  passwordInput = passwordInput.slice(0, -1);
-  updatePasswordDisplay();
-
-  document.getElementById('passwordMessage').textContent =
-    'Enter the 4-digit password ♡';
+function deleteNumber(){
+  passwordInput=passwordInput.slice(0,-1);updatePasswordDisplay();
+  document.getElementById('passwordMessage').textContent='Enter the 4-digit password ♡';
 }
-
-function clearPassword() {
-  passwordInput = "";
-  updatePasswordDisplay();
-
-  document.getElementById('passwordMessage').textContent =
-    'Enter the 4-digit password ♡';
+function clearPassword(){
+  passwordInput="";updatePasswordDisplay();
+  document.getElementById('passwordMessage').textContent='Enter the 4-digit password ♡';
 }
-
-function checkPassword() {
-  const message = document.getElementById('passwordMessage');
-
-  if (passwordInput === '2111') {
-
-    message.textContent = 'Correct! Welcome, Didi ♡';
-
-    setTimeout(() => {
-
-      document.getElementById('passwordScreen').classList.remove('show');
-
+function checkPassword(){
+  const message=document.getElementById('passwordMessage');
+  if(passwordInput==='2111'){
+    message.textContent='Correct! Welcome, Didi ♡';
+    setTimeout(()=>{
+      document.getElementById('passwordScreen').classList.remove('active');
       document.getElementById('site').classList.add('started');
-
-      showSection('welcome');
-
-      startHearts();
-
-    }, 900);
-
-  } else {
-
-    message.textContent = 'Oops! Try again, birthday boy ♡';
-
-    setTimeout(() => {
-
-      passwordInput = "";
-      updatePasswordDisplay();
-
-      message.textContent = 'Enter the 4-digit password ♡';
-
-    }, 900);
-
+      showSection('welcome');startHearts();
+    },700);
+  }else{
+    message.textContent='Oops! Try again, birthday boy ♡';
+    setTimeout(()=>{passwordInput="";updatePasswordDisplay();message.textContent='Enter the 4-digit password ♡'},900);
   }
 }
-
-/* SECTION NAVIGATION */
-
-function showSection(id) {
-
-  ['welcome', 'letter', 'gifts', 'final'].forEach(x => {
-    document.getElementById(x).classList.add('hidden');
-  });
-
+function showSection(id){
+  ['welcome','letter','readLetter','gifts','memories','final'].forEach(x=>document.getElementById(x).classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
-
-  const envelope = document.getElementById('envelope');
-
-  if (envelope) {
-    envelope.classList.remove('open');
-  }
-
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+  const env=document.getElementById('envelope');if(env)env.classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+  const song=document.getElementById('birthdaySong');
+  if(id==='final'){song.currentTime=0;}else if(song&&!song.paused){song.pause();}
 }
-
-/* OPEN ENVELOPE */
-
-function openEnvelope() {
-  document.getElementById('envelope').classList.toggle('open');
-}
-
-/* GIFT MESSAGES */
-
-function gift(i) {
-
-  const messages = [
-    "Your first gift: a lifetime supply of hugs (redeemable anytime).",
-
-    "Your second gift: I will always be cheering for you, in every little thing you do.",
-
-    "Your third gift: one promise — to keep making lovely memories with you. 💙"
+function openEnvelope(){document.getElementById('envelope').classList.toggle('open')}
+function gift(i){
+  const messages=[
+    "Your first gift: a lifetime supply of hugs (redeemable anytime). ♡",
+    "Your second gift: I will always be cheering for you, in every little thing you do. 💙",
+    "Your third gift: one promise — to keep making lovely memories with you. 🩵"
   ];
-
-  document.getElementById('giftMessage').textContent = messages[i];
-
+  document.getElementById('giftMessage').textContent=messages[i];
 }
-
-/* FLOATING HEARTS */
-
-let heartIntervalStarted = false;
-
-function startHearts() {
-
-  if (heartIntervalStarted) return;
-  heartIntervalStarted = true;
-
-  setInterval(() => {
-
-    const heart = document.createElement('div');
-
-    heart.className = 'floating-heart';
-    heart.textContent = ['♡', '♥', '✦'][Math.floor(Math.random() * 3)];
-
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.fontSize = (14 + Math.random() * 18) + 'px';
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 7000);
-
-  }, 1200);
-
+let heartIntervalStarted=false;
+function startHearts(){
+  if(heartIntervalStarted)return;heartIntervalStarted=true;
+  setInterval(()=>{
+    const heart=document.createElement('div');heart.className='floating-heart';
+    heart.textContent=['♡','♥','✦'][Math.floor(Math.random()*3)];
+    heart.style.left=Math.random()*100+'vw';heart.style.fontSize=(14+Math.random()*18)+'px';
+    document.body.appendChild(heart);setTimeout(()=>heart.remove(),7000);
+  },1200);
 }
-
 </script>
-
 </body>
 </html>
