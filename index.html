@@ -24,12 +24,7 @@ body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   color: var(--ink);
-  background: linear-gradient(
-    180deg,
-    #b9dcff 0%,
-    #eaf6ff 55%,
-    #d4eaff 100%
-  );
+  background: linear-gradient(180deg, #b9dcff 0%, #eaf6ff 55%, #d4eaff 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -70,6 +65,16 @@ body {
 
 @keyframes float {
   50% { transform: translateY(-16px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* INTRO SCREEN */
@@ -116,7 +121,7 @@ body {
 }
 
 .intro-decoration {
-  color: #ffffff;
+  color: white;
   font-size: 28px;
   letter-spacing: 12px;
   margin: 20px 0 30px;
@@ -127,14 +132,109 @@ body {
   to { transform: scale(1.15); opacity: .6; }
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1); }
+/* PASSWORD SCREEN */
+
+.password-screen {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px 18px;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.password-screen.show {
+  display: flex;
+}
+
+.password-title {
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #397db5;
+  margin: 15px 0;
+}
+
+.pixel-couple {
+  font-size: 75px;
+  margin: 10px 0;
+  filter: drop-shadow(3px 5px 0 #ffffff);
+  animation: float 3s ease-in-out infinite;
+}
+
+.password-subtitle {
+  font-size: 14px;
+  color: #477da8;
+  margin-bottom: 20px;
+}
+
+.password-display {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin: 12px 0 20px;
+}
+
+.password-dot {
+  width: 43px;
+  height: 43px;
+  border: 2px solid white;
+  border-radius: 13px;
+  background: #ffffffa8;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  color: #397db5;
+  box-shadow: 0 4px 10px #397db522;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 65px);
+  gap: 12px;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.keypad button {
+  width: 65px;
+  height: 58px;
+  padding: 0;
+  border-radius: 20px;
+  background: #ffffffd9;
+  color: #397db5;
+  border: 2px solid white;
+  box-shadow: 0 4px 0 #a9d5ff;
+  font-size: 20px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.keypad button:active {
+  transform: scale(.9);
+}
+
+.keypad .special-key {
+  background: #d9edff;
+  font-size: 15px;
+}
+
+.password-message {
+  min-height: 28px;
+  color: #397db5;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.password-hint {
+  color: #6b9bc0;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 5px;
 }
 
 /* MAIN WEBSITE */
@@ -267,7 +367,7 @@ button:active {
 .floating-heart {
   position: fixed;
   bottom: -30px;
-  color: #ffffff;
+  color: white;
   pointer-events: none;
   z-index: 0;
   animation: heartFloat 7s linear forwards;
@@ -294,7 +394,7 @@ button:active {
   font-style: italic;
   text-align: left;
   color: #315675;
-  background: linear-gradient(135deg, #ffffff, #f0f8ff);
+  background: linear-gradient(135deg, #fff, #f0f8ff);
   border: 1px solid #b9dcf7;
   border-radius: 20px;
   padding: 25px;
@@ -491,6 +591,59 @@ footer {
 
 </section>
 
+<!-- PASSWORD SCREEN -->
+
+<section class="password-screen" id="passwordScreen">
+
+  <div class="pixel-couple">👩🏻‍❤️‍👨🏻</div>
+
+  <p class="password-title">
+    A LITTLE SECRET FOR YOU
+  </p>
+
+  <h2>Guess the Password ♡</h2>
+
+  <p class="password-subtitle">
+    Only someone special knows the answer...
+  </p>
+
+  <div class="password-display">
+    <div class="password-dot" id="digit0">♡</div>
+    <div class="password-dot" id="digit1">♡</div>
+    <div class="password-dot" id="digit2">♡</div>
+    <div class="password-dot" id="digit3">♡</div>
+  </div>
+
+  <div class="keypad">
+
+    <button onclick="pressNumber('1')">1</button>
+    <button onclick="pressNumber('2')">2</button>
+    <button onclick="pressNumber('3')">3</button>
+
+    <button onclick="pressNumber('4')">4</button>
+    <button onclick="pressNumber('5')">5</button>
+    <button onclick="pressNumber('6')">6</button>
+
+    <button onclick="pressNumber('7')">7</button>
+    <button onclick="pressNumber('8')">8</button>
+    <button onclick="pressNumber('9')">9</button>
+
+    <button class="special-key" onclick="clearPassword()">CLEAR</button>
+    <button onclick="pressNumber('0')">0</button>
+    <button class="special-key" onclick="deleteNumber()">⌫</button>
+
+  </div>
+
+  <p class="password-message" id="passwordMessage">
+    Enter the 4-digit password ♡
+  </p>
+
+  <p class="password-hint">
+    MADE WITH LOVE FOR DIDI
+  </p>
+
+</section>
+
 <!-- MAIN WEBSITE -->
 
 <main class="wrap site" id="site">
@@ -541,8 +694,7 @@ footer {
 
   <div class="envelope-stage">
 
-    <div class="envelope" id="envelope"
-         onclick="openEnvelope()">
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
 
       <div class="envelope-back"></div>
 
@@ -654,19 +806,82 @@ Your favourite person ♡</div>
 
 <script>
 
-/* START INTRO */
+/* PASSWORD */
+
+let passwordInput = "";
 
 function startExperience() {
   document.getElementById('intro').style.display = 'none';
+  document.getElementById('passwordScreen').classList.add('show');
+}
 
-  document.getElementById('site').classList.add('started');
+function updatePasswordDisplay() {
+  for (let i = 0; i < 4; i++) {
+    document.getElementById('digit' + i).textContent =
+      passwordInput[i] ? '♥' : '♡';
+  }
+}
 
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+function pressNumber(number) {
+  if (passwordInput.length >= 4) return;
 
-  startHearts();
+  passwordInput += number;
+  updatePasswordDisplay();
+
+  if (passwordInput.length === 4) {
+    checkPassword();
+  }
+}
+
+function deleteNumber() {
+  passwordInput = passwordInput.slice(0, -1);
+  updatePasswordDisplay();
+
+  document.getElementById('passwordMessage').textContent =
+    'Enter the 4-digit password ♡';
+}
+
+function clearPassword() {
+  passwordInput = "";
+  updatePasswordDisplay();
+
+  document.getElementById('passwordMessage').textContent =
+    'Enter the 4-digit password ♡';
+}
+
+function checkPassword() {
+  const message = document.getElementById('passwordMessage');
+
+  if (passwordInput === '2111') {
+
+    message.textContent = 'Correct! Welcome, Didi ♡';
+
+    setTimeout(() => {
+
+      document.getElementById('passwordScreen').classList.remove('show');
+
+      document.getElementById('site').classList.add('started');
+
+      showSection('welcome');
+
+      startHearts();
+
+    }, 900);
+
+  } else {
+
+    message.textContent = 'Oops! Try again, birthday boy ♡';
+
+    setTimeout(() => {
+
+      passwordInput = "";
+      updatePasswordDisplay();
+
+      message.textContent = 'Enter the 4-digit password ♡';
+
+    }, 900);
+
+  }
 }
 
 /* SECTION NAVIGATION */
@@ -715,7 +930,12 @@ function gift(i) {
 
 /* FLOATING HEARTS */
 
+let heartIntervalStarted = false;
+
 function startHearts() {
+
+  if (heartIntervalStarted) return;
+  heartIntervalStarted = true;
 
   setInterval(() => {
 
