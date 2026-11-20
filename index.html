@@ -217,15 +217,16 @@ button:active{
 /* ENVELOPE FIX */
 
 .envelope{
- width:250px;
- height:165px;
- margin:85px auto 65px;
+ width:310px;
+ max-width:90%;
+ height:205px;
+ margin:280px auto 65px;
  position:relative;
  background:#82bdf0;
  border:5px solid #397db5;
  box-shadow:0 6px 0 #397db5;
  cursor:pointer;
- perspective:600px;
+ perspective:800px;
 }
 
 .envelope:before{
@@ -233,11 +234,9 @@ button:active{
  position:absolute;
  inset:0;
  background:#9bcdf4;
- clip-path:polygon(
-  0 0,100% 0,100% 100%,
-  50% 52%,0 100%
- );
+ clip-path:polygon(0 0,100% 0,100% 100%,50% 52%,0 100%);
  z-index:3;
+ pointer-events:none;
 }
 
 .envelope:after{
@@ -246,40 +245,43 @@ button:active{
  top:0;
  left:0;
  width:100%;
- height:90px;
+ height:105px;
  background:#d5edff;
  clip-path:polygon(0 0,100% 0,50% 100%);
  transform-origin:top;
  transition:transform .7s ease;
  z-index:4;
+ pointer-events:none;
 }
 
 .letter{
  position:absolute;
- left:5%;
- top:8px;
- width:90%;
- min-height:145px;
- background:#f4fbff;
+ left:3%;
+ top:10px;
+ width:94%;
+ min-height:230px;
+ background:#fffdf2;
  border:3px solid #6ba8df;
  border-radius:5px;
- padding:12px 9px;
+ padding:15px 12px;
  font-size:12px;
- line-height:1.55;
+ line-height:1.6;
  opacity:0;
  z-index:5;
- transition:all .75s ease;
+ transform:translateY(0);
+ transition:transform .75s ease,opacity .5s ease;
 }
 
 .seal{
  position:absolute;
  z-index:6;
- top:52px;
+ top:65px;
  left:0;
  right:0;
  color:#397db5;
  font-size:35px;
  text-shadow:1px 2px white;
+ transition:opacity .3s;
 }
 
 .envelope.open:after{
@@ -288,7 +290,11 @@ button:active{
 
 .envelope.open .letter{
  opacity:1;
- transform:translateY(-125px);
+ transform:translateY(-235px);
+}
+
+.envelope.open .seal{
+ opacity:0;
 }
 
 /* MUSIC */
@@ -483,13 +489,37 @@ audio{width:100%;margin-top:12px}
  </main>
 </section>
 
+<!-- MUSIC -->
+<section class="page" id="music">
+ <i class="cloud c1">☁</i>
+ <i class="cloud c2">☁</i>
+ <i class="spark s3">♫</i>
+
+ <main class="panel">
+  <div class="kicker">✦ LEVEL 01 : SOMETHING THAT MAKES ME THINKS OF YOU ✦</div>
+  <h1>SOMEWHERE IN THIS<br>MELODY♡</h1>
+
+  <div class="musicbox">
+   <div class="record"><span></span></div>
+   <strong>♾️</strong>
+   <p class="small">[U can skip to 00:50]</p>
+   <audio id="song" controls preload="metadata">
+    <source src="bergema-sampai-selamanya.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+   </audio>
+  </div>
+
+  <button onclick="showPage('birthday')">WHATS NEXT YA🤔 ➜</button>
+ </main>
+</section>
+
 <!-- BIRTHDAY -->
 <section class="page" id="birthday">
  <i class="cloud c1">☁</i>
  <i class="cloud c2">☁</i>
 
  <main class="panel">
-  <div class="kicker">✦ LEVEL 01 : YOUR SPECIAL DAY ✦</div>
+  <div class="kicker">✦ LEVEL 02 : YOUR SPECIAL DAY ✦</div>
   <svg class="pixel"><use href="#girl"/></svg>
   <div class="bubble">
    Today is all about you cinta!<br>
@@ -505,7 +535,7 @@ audio{width:100%;margin-top:12px}
  <i class="cloud c2">☁</i>
 
  <main class="panel">
-  <div class="kicker">✦ LEVEL 02 : SURPRISE ✦</div>
+  <div class="kicker">✦ LEVEL 03 : SURPRISE ✦</div>
   <h1>CHOOSE YOUR<br>BEST GIFT!</h1>
   <p class="small">Tap a present to open your surprise👻</p>
 
@@ -530,31 +560,7 @@ audio{width:100%;margin-top:12px}
   </div>
 
   <p class="small" id="giftHint">Three bestt gift for ma baby♡</p>
-  <button onclick="showPage('music')">NEXT SUPRISE😘 ➜</button>
- </main>
-</section>
-
-<!-- MUSIC -->
-<section class="page" id="music">
- <i class="cloud c1">☁</i>
- <i class="cloud c2">☁</i>
- <i class="spark s3">♫</i>
-
- <main class="panel">
-  <div class="kicker">✦ LEVEL 01 : SOMETHING THAT MAKES ME THINKS OF YOU ✦</div>
-  <h1>SOMEWHERE IN THIS<br>MELODY♡</h1>
-
-  <div class="musicbox">
-   <div class="record"><span></span></div>
-   <strong>♾️</strong>
-   <p class="small">[U can skip to 00:50]</p>
-   <audio id="song" controls preload="metadata">
-    <source src="bergema-sampai-selamanya.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-   </audio>
-  </div>
-
-  <button onclick="showPage('letter')">WHATS NEXT YA🤔 ➜</button>
+  <button onclick="showPage('letter')">NEXT SUPRISE😘 ➜</button>
  </main>
 </section>
 
@@ -565,7 +571,7 @@ audio{width:100%;margin-top:12px}
  <i class="spark s1">✦</i>
 
  <main class="panel">
-  <div class="kicker">✦ LEVEL 02 : ONE LITTLE LETTER ✦</div>
+  <div class="kicker">✦ LEVEL 04 : ONE LITTLE LETTER ✦</div>
   <h1>SURAT CINTA<br>FOR MY MAN ♡</h1>
   <p class="small">Tap the envelope to open it.</p>
 
@@ -644,7 +650,7 @@ function clearCode(){
 function checkCode(){
  if(entered==="2111"){
   document.getElementById("passMessage").textContent="YOU GOT IT! ♡";
-  setTimeout(()=>showPage("birthday"),400);
+  setTimeout(()=>showPage("music"),400);
  }else{
   document.getElementById("passMessage").textContent="Wrong password! Try again ♡";
   entered="";
