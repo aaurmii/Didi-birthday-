@@ -166,6 +166,8 @@ button:active {
   display: none;
 }
 
+/* LOVE LETTER */
+
 .letter {
   font-family: Georgia, serif;
   font-size: 15px;
@@ -180,6 +182,97 @@ button:active {
   white-space: pre-line;
   box-shadow: 0 8px 25px rgba(57,125,181,0.12);
 }
+
+/* ENVELOPE ANIMATION */
+
+.envelope-area {
+  padding: 20px 0 45px;
+}
+
+.envelope {
+  position: relative;
+  width: 240px;
+  height: 155px;
+  margin: 35px auto 10px;
+  background: #a9d5ff;
+  border-radius: 5px;
+  cursor: pointer;
+  perspective: 800px;
+  box-shadow: 0 12px 25px rgba(57,125,181,.18);
+}
+
+.envelope-letter {
+  position: absolute;
+  width: 82%;
+  height: 125px;
+  left: 9%;
+  bottom: 8px;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 18px;
+  color: #397db5;
+  font-size: 22px;
+  box-shadow: 0 2px 8px #397db522;
+  transition: transform 1s ease;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-top: 85px solid #78b9ed;
+  transform-origin: top center;
+  transition: transform .8s ease;
+  z-index: 3;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #a9d5ff;
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  z-index: 2;
+}
+
+.envelope-heart {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 27px;
+  z-index: 4;
+  transition: opacity .4s;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .envelope-letter {
+  transform: translateY(-95px);
+}
+
+.envelope.open .envelope-heart {
+  opacity: 0;
+}
+
+.envelope-hint {
+  color: #568bb8;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* GIFTS */
 
 .gift-grid {
   display: grid;
@@ -233,45 +326,6 @@ footer {
   .gift { padding: 13px 4px; }
   .subtitle { font-size: 16px; }
 }
-  
-.envelope {
-  position: relative;
-  width: 220px;
-  height: 145px;
-  background: #a9d5ff;
-  margin: 35px auto;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(57,125,181,.2);
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 110px solid transparent;
-  border-right: 110px solid transparent;
-  border-top: 85px solid #78b9ed;
-  z-index: 2;
-  transform-origin: top;
-  transition: transform .8s;
-}
-
-.envelope.open::before {
-  transform: rotateX(180deg);
-}
-
-.envelope::after {
-  content: "♡";
-  position: absolute;
-  top: 55px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 28px;
-  z-index: 3;
-}
-
 </style>
 </head>
 
@@ -315,14 +369,30 @@ footer {
 </section>
 
 <section class="card hidden" id="letter">
-<div class="envelope" id="envelope"></div>
-
-<p style="text-align:center;color:#397db5;">
-  A little letter just for you ♡
-</p>
-  <div class="hero-art">💌</div>
 
   <h2>A Little Birthday Letter</h2>
+
+  <p>Tap the envelope to open your little surprise ♡</p>
+
+  <div class="envelope-area">
+
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+
+      <div class="envelope-letter">💌</div>
+
+      <div class="envelope-flap"></div>
+
+      <div class="envelope-front"></div>
+
+      <div class="envelope-heart">♡</div>
+
+    </div>
+
+    <p class="envelope-hint">
+      TAP TO OPEN ♡
+    </p>
+
+  </div>
 
   <div class="letter">Dear Didi,
 
@@ -423,13 +493,23 @@ function showSection(id) {
 
   document.getElementById(id).classList.remove('hidden');
 
+  // Reset envelope whenever letter section opens
+  const envelope = document.getElementById('envelope');
+  if (envelope) {
+    envelope.classList.remove('open');
+  }
+
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
-function openEnvelope() {
-  document.getElementById('envelope').classList.toggle('open');
+
 }
+
+function openEnvelope() {
+
+  document.getElementById('envelope').classList.toggle('open');
+
 }
 
 function gift(i) {
