@@ -4,11 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b9dcff">
-<title>For You ♡</title>
+<title>For DIDI ♡</title>
+  .stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 60%, white, transparent),
+    radial-gradient(3px 3px at 40% 80%, white, transparent),
+    radial-gradient(2px 2px at 85% 20%, white, transparent);
+  background-size:250px 250px;
+  animation:twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.3}
+  to{opacity:1}
+}
 <style>
-  :root{--sky:#dff1ff;--blue:#8fc7f5;--deep:#28649b;--ink:#244765;--white:#fff}
+  :root{--sky:#eaf6ff;--blue:#a9d5ff;--deep:#397db5; --ink:#244765;--white:#ffffff;}
   *{box-sizing:border-box}
-  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#c5e6ff 0%,#eef8ff 55%,#d7edff 100%);min-height:100vh;overflow-x:hidden}
+  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#b9dcff 0%,#eaf6ff 55%,#d4eaff 100%);min-height:100vh;overflow-x:hidden}
   .stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(#fff 1.5px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1px);background-size:70px 70px,110px 110px;background-position:0 0,30px 40px}
   .wrap{width:min(720px,92%);margin:0 auto;padding:34px 0 60px;position:relative}
   .cloud{position:fixed;font-size:46px;opacity:.55;animation:float 8s ease-in-out infinite;pointer-events:none}
@@ -23,9 +41,8 @@
   .hero-art{font-size:clamp(52px,13vw,86px);margin:8px 0 12px;filter:drop-shadow(0 5px 0 #a7d5f5)}
   h2{color:#28649b;margin:8px 0 12px;font-size:28px}
   p{line-height:1.75}
-  button{border:0;border-radius:999px;background:#438dca;color:white;padding:13px 23px;font-size:15px;cursor:pointer;box-shadow:0 5px 0 #28649b;transition:.15s}
-  button:hover{transform:translateY(-2px);box-shadow:0 7px 0 #28649b}
-  button:active{transform:translateY(3px);box-shadow:0 2px 0 #28649b}
+  button{border:0;border-radius:999px;background:#78b9ed;color:white;padding:14px 25px;font-size:15px; cursor:pointer;box-shadow:0 5px 0 #397db5;transition:.2s;}
+button:hover{transform:translateY(-3px);}
   .secondary{background:#e6f4ff;color:#28649b;box-shadow:0 5px 0 #a5cfea}
   .hidden{display:none}
   .letter{font-style:italic;text-align:left;background:#fafdff;border:1px dashed #9bc9ec;border-radius:16px;padding:20px;white-space:pre-line}
@@ -53,7 +70,7 @@
     <div class="hero-art">🎂 🧸 🎈</div>
     <h2>Ready for your surprise?</h2>
     <p>I made something just for you. Take your time and enjoy every little part of it.</p>
-    <button onclick="showSection('letter')">Open your surprise ♡</button>
+    <button onclick="showSection('letter')">Click me,birthday boy ♡</button>
   </section>
 
   <section class="card hidden" id="letter">
