@@ -233,6 +233,45 @@ footer {
   .gift { padding: 13px 4px; }
   .subtitle { font-size: 16px; }
 }
+  
+.envelope {
+  position: relative;
+  width: 220px;
+  height: 145px;
+  background: #a9d5ff;
+  margin: 35px auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(57,125,181,.2);
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-top: 85px solid #78b9ed;
+  z-index: 2;
+  transform-origin: top;
+  transition: transform .8s;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+.envelope::after {
+  content: "♡";
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 28px;
+  z-index: 3;
+}
+
 </style>
 </head>
 
