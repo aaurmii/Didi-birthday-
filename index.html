@@ -1,112 +1,404 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b9dcff">
-<title>For DIDI ♡</title>
+<title>For Didi ♡</title>
+
 <style>
-  :root{--sky:#eaf6ff;--blue:#a9d5ff;--deep:#397db5; --ink:#244765;--white:#ffffff;}
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#b9dcff 0%,#eaf6ff 55%,#d4eaff 100%);min-height:100vh;overflow-x:hidden}
-  .stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(#fff 1.5px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1px);background-size:70px 70px,110px 110px;background-position:0 0,30px 40px}
-  .wrap{width:min(720px,92%);margin:0 auto;padding:34px 0 60px;position:relative}
-  .cloud{position:fixed;font-size:46px;opacity:.55;animation:float 8s ease-in-out infinite;pointer-events:none}
-  .c1{top:9%;left:4%}.c2{top:22%;right:5%;animation-delay:2s}.c3{bottom:10%;left:8%;animation-delay:4s}
-  @keyframes float{50%{transform:translateY(-13px)}}
-  header{text-align:center;padding:28px 10px 18px}
-  .label{display:inline-block;background:#fff9;padding:8px 16px;border:1px solid #fff;border-radius:30px;font:12px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
-  h1{font-size:clamp(42px,9vw,70px);line-height:1.02;margin:20px 0 10px;color:#28649b;text-shadow:3px 3px 0 #fff}
-  .subtitle{font-size:18px;margin:0 auto;max-width:440px;line-height:1.6}
-  .pixel{font-family:monospace;letter-spacing:2px;font-size:14px;color:#4f88b8;margin:18px 0}
-  .card{background:#ffffffd9;border:2px solid white;border-radius:24px;padding:26px;box-shadow:0 12px 35px #4d8db522;margin:22px 0;text-align:center;backdrop-filter:blur(5px)}
-  .hero-art{font-size:clamp(52px,13vw,86px);margin:8px 0 12px;filter:drop-shadow(0 5px 0 #a7d5f5)}
-  h2{color:#28649b;margin:8px 0 12px;font-size:28px}
-  p{line-height:1.75}
-  button{border:0;border-radius:999px;background:#78b9ed;color:white;padding:14px 25px;font-size:15px; cursor:pointer;box-shadow:0 5px 0 #397db5;transition:.2s;}
-button:hover{transform:translateY(-3px);}
-  .secondary{background:#e6f4ff;color:#28649b;box-shadow:0 5px 0 #a5cfea}
-  .hidden{display:none}
-  .letter{font-style:italic;text-align:left;background:#fafdff;border:1px dashed #9bc9ec;border-radius:16px;padding:20px;white-space:pre-line}
-  .gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-  .gift{background:#eaf6ff;border:1px solid #b8dcf7;border-radius:18px;padding:16px 8px;cursor:pointer;font-size:34px;transition:.2s}
-  .gift:hover{transform:translateY(-5px)}
-  .gift small{display:block;font:12px Arial,sans-serif;color:#477da8;margin-top:8px}
-  #giftMessage{min-height:48px;font-size:16px;color:#28649b}
-  footer{text-align:center;font:12px Arial,sans-serif;letter-spacing:1px;color:#5c8bb1;margin-top:30px}
-  .heart{color:#5c9ed5}
-  @media(max-width:480px){.card{padding:21px 17px}.gift-grid{gap:7px}.gift{padding:13px 4px}.subtitle{font-size:16px}}
+:root {
+  --sky: #eaf6ff;
+  --blue: #a9d5ff;
+  --deep: #397db5;
+  --ink: #244765;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    #b9dcff 0%,
+    #eaf6ff 55%,
+    #d4eaff 100%
+  );
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  background-image:
+    radial-gradient(#fff 1.5px, transparent 1.5px),
+    radial-gradient(#fff 1px, transparent 1px);
+  background-size: 70px 70px, 110px 110px;
+  background-position: 0 0, 30px 40px;
+}
+
+.wrap {
+  width: min(720px, 92%);
+  margin: 0 auto;
+  padding: 34px 0 60px;
+  position: relative;
+}
+
+.cloud {
+  position: fixed;
+  font-size: 46px;
+  opacity: .55;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.c1 { top: 9%; left: 4%; }
+.c2 { top: 22%; right: 5%; animation-delay: 2s; }
+.c3 { bottom: 10%; left: 8%; animation-delay: 4s; }
+
+@keyframes float {
+  50% { transform: translateY(-13px); }
+}
+
+header {
+  text-align: center;
+  padding: 28px 10px 18px;
+}
+
+.label {
+  display: inline-block;
+  background: #ffffff99;
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 30px;
+  font: 12px Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(42px, 9vw, 70px);
+  line-height: 1.02;
+  margin: 20px 0 10px;
+  color: #28649b;
+  text-shadow: 3px 3px 0 white;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 440px;
+  line-height: 1.6;
+}
+
+.pixel {
+  font-family: monospace;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #4f88b8;
+  margin: 18px 0;
+}
+
+.card {
+  background: #ffffffd9;
+  border: 2px solid white;
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 12px 35px #4d8db522;
+  margin: 22px 0;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.hero-art {
+  font-size: clamp(52px, 13vw, 86px);
+  margin: 8px 0 12px;
+  filter: drop-shadow(0 5px 0 #a7d5f5);
+}
+
+h2 {
+  color: #28649b;
+  margin: 8px 0 12px;
+  font-size: 28px;
+}
+
+p {
+  line-height: 1.75;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  background: #78b9ed;
+  color: white;
+  padding: 14px 25px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #397db5;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #397db5;
+}
+
+.secondary {
+  background: #e6f4ff;
+  color: #28649b;
+  box-shadow: 0 5px 0 #a5cfea;
+}
+
+.hidden {
+  display: none;
+}
+
+.letter {
+  font-style: italic;
+  text-align: left;
+  background: #fafdff;
+  border: 1px dashed #9bc9ec;
+  border-radius: 16px;
+  padding: 20px;
+  white-space: pre-line;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.gift {
+  background: #eaf6ff;
+  border: 1px solid #b8dcf7;
+  border-radius: 18px;
+  padding: 16px 8px;
+  cursor: pointer;
+  font-size: 34px;
+  transition: .2s;
+}
+
+.gift:hover {
+  transform: translateY(-5px);
+}
+
+.gift small {
+  display: block;
+  font: 12px Arial, sans-serif;
+  color: #477da8;
+  margin-top: 8px;
+}
+
+#giftMessage {
+  min-height: 48px;
+  font-size: 16px;
+  color: #28649b;
+}
+
+footer {
+  text-align: center;
+  font: 12px Arial, sans-serif;
+  letter-spacing: 1px;
+  color: #5c8bb1;
+  margin-top: 30px;
+}
+
+.heart {
+  color: #5c9ed5;
+}
+
+@media(max-width:480px) {
+  .card { padding: 21px 17px; }
+  .gift-grid { gap: 7px; }
+  .gift { padding: 13px 4px; }
+  .subtitle { font-size: 16px; }
+}
 </style>
 </head>
+
 <body>
-<div class="stars"></div><div class="cloud c1">☁️</div><div class="cloud c2">☁️</div><div class="cloud c3">☁️</div>
+
+<div class="stars"></div>
+<div class="cloud c1">☁️</div>
+<div class="cloud c2">☁️</div>
+<div class="cloud c3">☁️</div>
+
 <main class="wrap">
-  <header>
-    <span class="label">A little surprise for someone special</span>
-    <h1>Happy Birthday!</h1>
-    <p class="subtitle">To my favourite person — today is all about you. I hope this little corner of the internet makes you smile. ♡</p>
-    <div class="pixel">✦ MADE WITH LOVE ✦</div>
-  </header>
 
-  <section class="card" id="welcome">
-    <div class="hero-art">🎂 🧸 🎈</div>
-    <h2>Ready for your surprise?</h2>
-    <p>I made something just for you. Take your time and enjoy every little part of it.</p>
-    <button onclick="showSection('letter')">Click me,birthday boy ♡</button>
-  </section>
+<header>
+  <span class="label">A little surprise for someone special</span>
 
-  <section class="card hidden" id="letter">
-    <div class="hero-art">💌</div>
-    <h2>A little birthday letter</h2>
-    <div class="letter">Dear you,
+  <h1>Happy Birthday, Didi!</h1>
+
+  <p class="subtitle">
+    To my favourite person, Didi — today is all about you.
+    I hope this little corner of the internet makes you smile. ♡
+  </p>
+
+  <div class="pixel">✦ MADE WITH LOVE ✦</div>
+</header>
+
+<section class="card" id="welcome">
+
+  <div class="hero-art">🎂 🧸 🎈</div>
+
+  <h2>Ready for your surprise?</h2>
+
+  <p>
+    I made something just for you.
+    Take your time and enjoy every little part of it.
+  </p>
+
+  <button onclick="showSection('letter')">
+    Click Me, Birthday Boy! ♡
+  </button>
+
+</section>
+
+<section class="card hidden" id="letter">
+
+  <div class="hero-art">💌</div>
+
+  <h2>A Little Birthday Letter</h2>
+
+  <div class="letter">Dear Didi,
 
 Happy birthday to the person who makes ordinary days feel a little more special.
 
-I hope this new chapter brings you genuine happiness, good health, exciting opportunities, and countless reasons to smile. May you always find the courage to chase your dreams and the strength to get through the difficult days.
+I hope this new chapter brings you genuine happiness, good health, exciting opportunities, and countless reasons to smile.
+
+May you always find the courage to chase your dreams and the strength to get through the difficult days.
 
 Thank you for being you. You deserve all the beautiful things life has to offer.
 
 With lots of love,
 Your favourite person ♡</div>
-    <p><button onclick="showSection('gifts')">There's more… 🎁</button></p>
-  </section>
 
-  <section class="card hidden" id="gifts">
-    <div class="hero-art">🎁</div>
-    <h2>Choose a little gift</h2>
-    <p>Pick any box. Each one has a tiny message for you.</p>
-    <div class="gift-grid">
-      <button class="gift" onclick="gift(0)">🎁<small>Gift one</small></button>
-      <button class="gift" onclick="gift(1)">🎀<small>Gift two</small></button>
-      <button class="gift" onclick="gift(2)">💙<small>Gift three</small></button>
-    </div>
-    <p id="giftMessage">Your surprise is waiting…</p>
-    <button class="secondary" onclick="showSection('final')">One last thing ♡</button>
-  </section>
+  <p>
+    <button onclick="showSection('gifts')">
+      There's more… 🎁
+    </button>
+  </p>
 
-  <section class="card hidden" id="final">
-    <div class="hero-art">🌙 ⭐ 💙</div>
-    <h2>One more wish for you</h2>
-    <p>Wherever life takes you, I hope you never forget how loved, appreciated, and special you are.</p>
-    <p><strong>Happy birthday, my love.</strong><br>Here's to more memories together. ♡</p>
-    <button onclick="showSection('welcome')">Read it again ↺</button>
-  </section>
-  <footer>MADE JUST FOR YOU <span class="heart">♥</span></footer>
+</section>
+
+<section class="card hidden" id="gifts">
+
+  <div class="hero-art">🎁</div>
+
+  <h2>Choose a Little Gift</h2>
+
+  <p>
+    Pick any box. Each one has a tiny message for you.
+  </p>
+
+  <div class="gift-grid">
+
+    <button class="gift" onclick="gift(0)">
+      🎁
+      <small>Gift one</small>
+    </button>
+
+    <button class="gift" onclick="gift(1)">
+      🎀
+      <small>Gift two</small>
+    </button>
+
+    <button class="gift" onclick="gift(2)">
+      💙
+      <small>Gift three</small>
+    </button>
+
+  </div>
+
+  <p id="giftMessage">
+    Your surprise is waiting…
+  </p>
+
+  <button class="secondary" onclick="showSection('final')">
+    One last thing ♡
+  </button>
+
+</section>
+
+<section class="card hidden" id="final">
+
+  <div class="hero-art">🌙 ⭐ 💙</div>
+
+  <h2>One More Wish for You</h2>
+
+  <p>
+    Wherever life takes you, I hope you never forget
+    how loved, appreciated, and special you are.
+  </p>
+
+  <p>
+    <strong>Happy birthday, Didi. My love.</strong>
+    <br>
+    Here's to more memories together. ♡
+  </p>
+
+  <button onclick="showSection('welcome')">
+    Read it again ↺
+  </button>
+
+</section>
+
+<footer>
+  MADE JUST FOR YOU <span class="heart">♥</span>
+</footer>
+
 </main>
+
 <script>
-function showSection(id){
-  ['welcome','letter','gifts','final'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+
+function showSection(id) {
+
+  ['welcome', 'letter', 'gifts', 'final'].forEach(x => {
+    document.getElementById(x).classList.add('hidden');
+  });
+
   document.getElementById(id).classList.remove('hidden');
-  window.scrollTo({top:0,behavior:'smooth'});
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
 }
-function gift(i){
- const messages=[
-  "Your first gift: a lifetime supply of hugs (redeemable anytime).",
-  "Your second gift: I will always be cheering for you, in every little thing you do.",
-  "Your third gift: one promise — to keep making lovely memories with you. 💙"
- ];
- document.getElementById('giftMessage').textContent=messages[i];
+
+function gift(i) {
+
+  const messages = [
+
+    "Your first gift: a lifetime supply of hugs (redeemable anytime).",
+
+    "Your second gift: I will always be cheering for you, in every little thing you do.",
+
+    "Your third gift: one promise — to keep making lovely memories with you. 💙"
+
+  ];
+
+  document.getElementById('giftMessage').textContent = messages[i];
+
 }
+
 </script>
+
 </body>
 </html>
